@@ -845,33 +845,113 @@ namespace Demo01
             //}
             #endregion
             #region Two D array [Rectangler]
-            int[,] Marks;
-            Marks = new int[2, 4]; //{ { 1, 2, 3, 4 }, { 1, 2, 3, 4 } };
-            Console.WriteLine($"the size of array = {Marks.Length} , the number of dimensions = {Marks.Rank}");
-            Console.WriteLine($"number of rows = {Marks.GetLength(0)} , number of column = {Marks.GetLength(1)}");
+            //int[,] Marks;
+            //Marks = new int[2, 4]; //{ { 1, 2, 3, 4 }, { 1, 2, 3, 4 } };
+            //Console.WriteLine($"the size of array = {Marks.Length} , the number of dimensions = {Marks.Rank}");
+            //Console.WriteLine($"number of rows = {Marks.GetLength(0)} , number of column = {Marks.GetLength(1)}");
 
             ///read elments of arry from user 
             ///print elemnts of arry to user
             ///write program to do that with protictive code and readable messages
 
-            for (int i = 0; i < Marks.GetLength(0); i++) //0 , 1 
-            {
-                for (int j = 0; j < Marks.GetLength(1); j++) //0,1,2,3  0,1,2,3
-                {
-                    Console.WriteLine($"enter ({i},{j}) element");
-                    while (!int.TryParse(Console.ReadLine(), out Marks[i,j]))
-                    {
-                        Console.WriteLine("invalid input, please enter a valid integer");
-                    }
-                }
-            }
+            //for (int i = 0; i < Marks.GetLength(0); i++) //0 , 1 
+            //{
+            //    for (int j = 0; j < Marks.GetLength(1); j++) //0,1,2,3  0,1,2,3
+            //    {
+            //        Console.WriteLine($"enter ({i},{j}) element");
+            //        while (!int.TryParse(Console.ReadLine(), out Marks[i,j]))
+            //        {
+            //            Console.WriteLine("invalid input, please enter a valid integer");
+            //        }
+            //    }
+            //}
 
-            foreach (int item in Marks)
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (int item in Marks)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             //[quiz] write same program with only one loop
+            //for (int i = 0; i < Marks.Length; i++)
+            //{
+            //    int row = i / Marks.GetLength(1);
+            //    int column = i % Marks.GetLength(1);
+            //    Console.WriteLine($"insert array element [{row} , {column}]");
+            //    while(!int.TryParse(Console.ReadLine(),out Marks[row, column]))
+            //    {
+            //        Console.WriteLine("invalid input, please insert valid integer");
+            //    }
+            //}
+
+            #endregion
+            #region Two D [Jaged array]
+            //int[][,] numbers;
+            //numbers = new int[3][,];
+
+            //numbers[0] = new int[3, 5];
+            //numbers[1] = new int[1, 3];
+            //numbers[2] = new int[2, 1];
+
+            //Console.WriteLine($"the size of array = {numbers.Length} , the number of dimensions = {numbers.Rank}");
+            //Console.WriteLine($"the size of array = {numbers[0].Length} , the number of dimensions = {numbers[0].Rank}");
+            //Console.WriteLine($"number of rows = {numbers[0].GetLength(0)} , number of column = {numbers[0].GetLength(1)}");
+
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    for (int j = 0; j < numbers[i].Length; j++)
+            //    {
+            //        int r = j / numbers[i].GetLength(1);
+            //        int c = j % numbers[i].GetLength(1);
+            //        Console.WriteLine($"enter element [{i}][{r},{c}]");
+            //        while (!int.TryParse(Console.ReadLine(), out numbers[i][r, c]))
+            //        {
+            //            Console.WriteLine("invalid input, please enter a valid integer");
+
+            //        }
+            //    }
+            //}
+
+            //foreach (var item in numbers)
+            //{
+            //    foreach (var inneritem in item)
+            //    {
+            //        Console.WriteLine(inneritem);
+            //    }
+            //}
+
+            #endregion
+            #region array methods
+            //double[] numbers = { 8, 3, 4, 5, 6, 7, 9, 7, 1, 3, 8 };
+            #region 1.calss member method (static)
+            //Array.Sort(numbers);
+            //Array.Reverse(numbers);
+            //Array.Clear(numbers);
+            //Console.WriteLine(Array.IndexOf(numbers, 7)); // find first index
+            //Console.WriteLine(Array.LastIndexOf(numbers, 7)); // find first index
+
+
+            //int[] x = new int[5];
+
+            //Array.CreateInstance(typeof(int), 10);
+            #endregion
+            #region 2.object member method (dynamic)
+            //int[] newarr = new int[5];
+            //numbers.CopyTo(newarr, 0);
+            //numbers.SetValue(18, 5);
+
+            //var dest01 = Array.CreateInstance(numbers.GetType().GetElementType(), numbers.Length);
+
+            //string dest02 = "test";
+            //dest02 = 10;
+            #endregion
+            //foreach (int i in numbers)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //foreach (int i in newarr)
+            //{
+            //    Console.WriteLine(i);
+            //}
             #endregion
             #endregion
         }
