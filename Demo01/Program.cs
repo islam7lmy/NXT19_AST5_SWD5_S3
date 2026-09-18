@@ -1094,6 +1094,63 @@ namespace Demo01
             //PrintLine(pattern: "%");
             //PrintLine(20, "*");
             #endregion
+
+            #region value type
+            //class memeber method function take two numbers and swap them
+            //int x = 10, y = 20;
+            ////Console.WriteLine($"before swap : x = {x} , y = {y}");
+            ////Swap(x, y);
+            ////Console.WriteLine($"after swap : x = {x} , y = {y}");
+
+            //Console.WriteLine("***********************By ref******************");
+            //Console.WriteLine($"before swap : x = {x} , y = {y}");
+            //Swap(ref x,ref y);
+            //Console.WriteLine($"after swap : x = {x} , y = {y}");
+
+            #endregion
+
+            #region reference type
+            //write class memeber method take arr of int one diminssion and return sum of array element
+            //int[] numarr = new int[] { 3, 5, 6 };
+
+            //Console.WriteLine("******************passing by value********************");
+            ////Console.WriteLine(sumarraybyvalue(numarr));
+            ////Console.WriteLine(numarr[0]);
+            //sumarraybyvalue(numarr);
+            //foreach (int i in numarr)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            //numarr[0] = 3;
+
+            //Console.WriteLine("******************passing by ref********************");
+            ////Console.WriteLine(sumarraybyref(numarr));
+            ////Console.WriteLine(numarr[0]);
+            //sumarraybyref(ref numarr);
+            //foreach (int i in numarr)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            #endregion
+
+            #region Passing by out
+            //write class memeber method to take two integer numbers and return sum and mul
+            //int.TryParse(Console.ReadLine(), out int x);
+            //int x = 10, y = 20, sum, mul;
+            ////sumandmul(x, y,ref sum,ref mul);
+            //sumandmul(x, y, out sum, out mul);
+            //Console.WriteLine(sum);
+            //Console.WriteLine(mul);
+
+            #endregion
+
+            #region Params
+            //int[] numarr = new int[] { 1, 2, 3, 4 };
+            //sumarray(numarr);
+
+            //sumarray(1, 2, 3, 4, 5, 6);
+            #endregion
             #endregion
         }
 
@@ -1155,6 +1212,101 @@ namespace Demo01
         //    Console.WriteLine();
         //}
         #endregion
+
+        #region value type
+        //passing by value
+        //static void Swap(int num1 , int num2)
+        //{
+        //    Console.WriteLine($"inner function before swap : x = {num1} , y = {num2}");
+        //    int temp = num1;
+        //    num1 = num2;
+        //    num2 = temp;
+        //    Console.WriteLine($"inner function after swap : x = {num1} , y = {num2}");
+        //}
+
+        //passing by ref
+        //static void Swap(ref int num1,ref int num2)
+        //{
+        //    Console.WriteLine($"inner function before swap : x = {num1} , y = {num2}");
+        //    int temp = num1;
+        //    num1 = num2;
+        //    num2 = temp;
+        //    Console.WriteLine($"inner function after swap : x = {num1} , y = {num2}");
+        //}
+        #endregion
+
+        #region reference type
+        //static int sumarraybyvalue(int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int item in arr)
+        //    {
+        //        sum += item;
+        //    }
+        //    //arr[0] = 10;
+        //    arr = new int[] { 1, 2, 3 };
+        //    return sum;
+        //}
+
+        //static int sumarraybyref(ref int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int item in arr)
+        //    {
+        //        sum += item;
+        //    }
+        //    //arr[0] = 10;
+        //    arr = new int[] { 1, 2, 3 };
+        //    return sum;
+        //}
+        #endregion
+
+        #region Passing by out
+        //write class memeber method to take two integer numbers and return sum and mul
+        //static result sumandmul(int num1,int num2)
+        //{
+        //    result re = new result();
+        //    re.sum = num1 + num2;
+        //    re.mul = num1 * num2;
+        //    return re;
+        //}
+
+
+        //static void sumandmul(int num1, int num2,ref int sum ,ref int mul)
+        //{
+        //    sum = num1 + num2;
+        //    mul = num1 * num2;
+        //}
+
+        //static void sumandmul(int num1, int num2, out int sum, out int mul)
+        //{
+        //    //sum = num1 + num2;
+        //    //mul = num1 * num2;
+        //    Console.WriteLine(num1);
+        //}
+        #endregion
+
+        #region Params
+        //static int sumarray(int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int item in arr)
+        //    {
+        //        sum += item;
+        //    }
+        //    return sum;
+        //}
+
+        //static int sumarray(int result, params int[] arr)
+        //{
+        //    int sum = 0;
+        //    foreach (int item in arr)
+        //    {
+        //        sum += item;
+        //    }
+        //    return sum;
+        //}
+        #endregion
         #endregion
     }
 
@@ -1167,5 +1319,11 @@ namespace Demo01
 
     //        Program.PrintLine();
     //    }
+    //}
+
+    //class result
+    //{
+    //    public int sum;
+    //    public int mul;
     //}
 }
