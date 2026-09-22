@@ -1151,6 +1151,66 @@ namespace Demo01
 
             //sumarray(1, 2, 3, 4, 5, 6);
             #endregion
+
+            //reference type
+            //passing by value vs passing by ref
+            //Point p1 = new Point();
+            //p1.X = 1;
+            //p1.Y = 2;
+
+            //assignpoint(p1); //passing by value
+            //Console.WriteLine(p1.X); //1
+
+
+            //assignpointpassingbyref(ref p1); //passing by ref
+            //Console.WriteLine(p1.X); //10
+
+            //Point p2 = default; // null
+            ////assignpoint(p2);
+            //assignpointpassingbyref(ref p2);
+            //Console.WriteLine(p2.X);
+            #endregion
+
+            #region Exceptions Handling
+            //try
+            //{
+            //    DoSomeCode();
+            //}
+            //catch (Exception ex)
+            //{
+            //    //log
+            //    //Console.WriteLine(ex.Message);
+            //    throw ex;
+            //}
+            //finally
+            //{
+            //    //[release || deallocate || delete || close] unmanaged resources [databaseconnection , files]
+            //    Console.WriteLine("finally");
+            //}
+
+            //Console.WriteLine("Program is still running");
+            #endregion
+
+            #region Enums [labels]
+            #region Ex01
+            //Days day = Days.mon;
+            //Console.WriteLine(day); //day.tostring() => mon
+            //Console.WriteLine((int)day); // 2
+
+            //Daysss day01 = Daysss.mon;
+            //Console.WriteLine(day01); //day.tostring() => mon
+            //Console.WriteLine((int)day01); // 200 
+            #endregion
+            #region Ex02
+            //Console.WriteLine(Gender.Male);
+            //Console.WriteLine(Gender.male);
+            //Console.WriteLine(Gender.m);
+            //Console.WriteLine(Gender.M);
+            //Console.WriteLine((int)Gender.Male);
+            //Console.WriteLine((int)Gender.male);
+            //Console.WriteLine((int)Gender.m);
+            //Console.WriteLine((int)Gender.M);
+            #endregion
             #endregion
         }
 
@@ -1307,8 +1367,161 @@ namespace Demo01
         //    return sum;
         //}
         #endregion
+
+        ////passing by value
+        //static void assignpoint(Point p)
+        //{
+        //    p = new Point();
+        //    p.X = 10;
+        //    p.Y = 20;
+        //}
+
+        ////passing by ref
+        //static void assignpointpassingbyref(ref Point p)
+        //{
+        //    p = new Point();
+        //    p.X = 10;
+        //    p.Y = 20;
+        //}
+        #endregion
+
+        #region Exceptions Handling
+        //static void DoSomeCode()
+        //{
+        //    int x, y, z;
+        //    Console.WriteLine("Please enter first number:");
+        //    x = int.Parse(Console.ReadLine());
+
+        //    Console.WriteLine("Please enter last number:");
+        //    y = int.Parse(Console.ReadLine());
+
+        //    z = x / y;
+
+        //    Console.WriteLine($"result is : {z}");
+
+        //    int[] arr = { 1, 2, 3 };
+        //    Console.WriteLine("please enter index number to change it's value");
+        //    int i = int.Parse(Console.ReadLine());
+
+        //    arr[i] = 99;
+
+        //    Console.WriteLine(arr[i]);
+        //}
+
+        //static void DoSomeProtictiveCode()
+        //{
+        //    try
+        //    {
+        //        int x, y, z;
+        //        do
+        //        {
+        //            Console.WriteLine("Please enter first number:");
+        //        } while (!int.TryParse(Console.ReadLine(), out x));
+
+        //        do
+        //        {
+        //            Console.WriteLine("Please enter last number:");
+        //        } while (!int.TryParse(Console.ReadLine(), out y) || y == 0);
+
+        //        z = x / y;
+
+        //        Console.WriteLine($"result is : {z}");
+
+        //        int[] arr = { 1, 2, 3 };
+
+        //        int i = 0;
+
+        //        do
+        //        {
+        //            Console.WriteLine("please enter index number to change it's value");
+        //        } while (!int.TryParse(Console.ReadLine(), out i) || i < 0 || i >= arr.Length);
+
+        //        arr[i] = 99;
+
+        //        Console.WriteLine(arr[i]);
+        //    } 
+        //    catch (Exception ex)
+        //    {
+        //        //log
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //}
         #endregion
     }
+
+    #region Enums [labels]
+    enum Days
+    {
+        sat,
+        sun,
+        mon,
+        tus,
+        wed,
+        thr,
+        fri
+    }
+
+    enum Daysss : int
+    {
+        sat = 10,
+        sun = 100,
+        mon = 200,
+        tus = 300,
+        wed = 400,
+        thr = 500,
+        fri = 600
+    }
+
+    enum Gender : int
+    {
+        Male = 0,
+        male = 0,
+        m = 0,
+        M = 0,
+        Female = 1,
+        female = 1,
+        f = 1,
+        F = 1
+    }
+
+    enum Branches : byte // 0 => 255
+    {
+        samrtvally = 105,
+        Madi,
+        _6OCT = 252,
+        Mansoura, //253
+        asyut, //254
+        banha, //255
+        //suize //256 => not valid [is too large to fit it's datatype]
+
+    }
+
+    #region Ex: Enum + Params 
+    ///class member method take tax and service and all ordered items 
+    ///print the shape as bellow:
+    /// order details :
+    /// pizza : 120
+    /// juice : 60
+    /// ـــــــــــــــــــ
+    /// total item : 180
+    /// tax : (total item * (tax / 100))
+    /// service : (total item * (service  / 100))
+    /// ـــــــــــــــــــ
+    /// total oreder : total + tax + service
+    /// return total + tax + service;
+    /// 
+    /// Menu items is:
+    /// Pizaa = 120,
+    /// Burger = 150,
+    /// Juice = 40,
+    /// Salad = 30,
+    /// Dessert = 60
+
+    #endregion
+    #endregion
+
+
+
 
     //class test
     //{
