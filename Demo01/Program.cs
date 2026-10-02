@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
+using Comman;
 
 namespace Demo01
 {
@@ -1264,9 +1265,31 @@ namespace Demo01
 
             ///quiz
             ////write 3 class memeber methos
+            //Permission myp = Permission.write;
+
             ////function to add permissions => current permission , permission to add => my.addpermission()
+            //AddPermission(ref myp, Permission.read);
+            //AddPermission(ref myp, Permission.execute);
+            //AddPermission(ref myp, Permission.delete);
+
+
+            //AddPermission(ref myp, Permission.read, Permission.execute, Permission.delete);
+
             ////function to remove permissions => current permission , permission to remove
+
+            //RemovePermission(ref myp, Permission.execute, Permission.delete);
+
             ///function to check if permission exists return true else return false
+
+            //Console.WriteLine(CheckPermission(myp, Permission.read) ? "Permission allowed" : "Permission denied");
+            //Console.WriteLine(CheckPermission(myp, Permission.execute) ? "Permission allowed" : "Permission denied");
+
+            //Console.WriteLine(myp);
+
+            //PermissionItem myp = PermissionItem.write;
+            //Permission.AddPermission(ref myp, PermissionItem.read, PermissionItem.delete);
+
+            //Console.WriteLine(myp);
 
             #endregion
             #endregion
@@ -1526,6 +1549,30 @@ namespace Demo01
         //    Console.WriteLine($"total oreder : {total + tax + service}");
         //}
         #endregion
+
+        #region Enum
+        //static void AddPermission(ref Permission Current, params Permission[] PermissionToAdd)
+        //{
+        //    foreach (Permission per in PermissionToAdd)
+        //    {
+        //        Current |= per; // => Current = Current | per;
+        //    }
+        //}
+
+        //static void RemovePermission(ref Permission Current, params Permission[] PermissionToRemove)
+        //{
+        //    foreach (Permission per in PermissionToRemove)
+        //    {
+        //        Current &= ~per; // => Current = Current & (~per);
+        //    }
+        //}
+
+        //static bool CheckPermission(Permission Current, Permission PermissionToCheck)
+        //{
+        //    return (Current & PermissionToCheck) == PermissionToCheck;
+        //}
+
+        #endregion
     }
 
     #region Enums [labels]
@@ -1608,36 +1655,36 @@ namespace Demo01
     //}
     #endregion
     #region Ex : Permission
-    class Users //1000 * 8 => 8000 byte
-    {
-        public int id;
-        public string name;
-        public Permission MyPermission; // 1 byte
+    //class Users //1000 * 8 => 8000 byte
+    //{
+    //    public int id;
+    //    public string name;
+    //    public Permission MyPermission; // 1 byte
 
-        ///write , read , update , delete , execute , select
-        //public bool write;   // 1 byte
-        //public bool read;    // 1 byte
-        //public bool update;  // 1 byte
-        //public bool delete;  // 1 byte
-        //public bool execute; // 1 byte
-        //public bool select;  // 1 byte
-        //public bool select1; // 1 byte
-        //public bool select2; // 1 byte
+    //    ///write , read , update , delete , execute , select
+    //    //public bool write;   // 1 byte
+    //    //public bool read;    // 1 byte
+    //    //public bool update;  // 1 byte
+    //    //public bool delete;  // 1 byte
+    //    //public bool execute; // 1 byte
+    //    //public bool select;  // 1 byte
+    //    //public bool select1; // 1 byte
+    //    //public bool select2; // 1 byte
 
-    }
+    //}
 
-    [Flags] //data anotation (decrator) => learn new behavior to calc
-    enum Permission : byte // 0 : 255
-    {
-        write = 1,
-        read = 2,
-        update = 4,
-        delete = 8,
-        execute = 16,
-        select = 32,
-        select1 = 64,
-        select2 = 128
-    }
+    //[Flags] //data anotation (decrator) => learn new behavior to calc
+    //enum Permission : byte // 0 : 255
+    //{
+    //    write = 1,
+    //    read = 2,
+    //    update = 4,
+    //    delete = 8,
+    //    execute = 16,
+    //    select = 32,
+    //    select1 = 64,
+    //    select2 = 128
+    //}
     #endregion
     #endregion
 
