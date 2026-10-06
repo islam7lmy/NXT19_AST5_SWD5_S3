@@ -59,9 +59,62 @@ namespace OOP
             //Console.WriteLine(p1.Y); 
             #endregion
             #region EX 02 : Employee
-            Employee emp = new Employee();
-            emp.Salary = 1000000000;
-            Console.WriteLine(emp.Salary);
+            //Employee emp = new Employee();
+            //emp.Name = "ahmed mohmed ahmed ibrahem";
+            //emp.Salary = 1000000000;
+            ////emp = new Employee("ahmed mohmed ahmed ibrahem");
+            //Console.WriteLine(emp.Salary);
+
+            //emp.SetName("ahmed mohmed ahmed ibrahem");
+
+            //Console.WriteLine(emp.GetName());
+
+            //emp.Salary = 20; //property => set
+            //Console.WriteLine(emp.Salary); // property => get
+
+            //emp.Age = 20;
+            //emp._Age = 20;
+            //Console.WriteLine(emp.Age);
+            //Console.WriteLine(emp._Age);
+
+            //Console.WriteLine(emp.Deductions);
+            //emp.Deductions = 10;
+            #endregion
+            #region Ex 03 : PhoneBook
+            //name => number
+            //add contact
+            //remove contact
+            //get contact
+            //set contact
+
+            //numbers arr[0]
+            //names arr[0]
+
+            //addcontact(name,number);
+            //removecontact(name); //if find contact remove from name arr and number arr
+            //getcontact(name); //=> number
+            //setcontact(name,number); //if find contact update number
+
+            PhoneBook book = new PhoneBook();
+            //book.names = new string[5]; 
+            //book.numbers = new string[10]; 
+
+            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            //book = new PhoneBook(15);
+            //book.AddContact("ahmed", "01234567891", 0); //=> disable postion make it automatic [quiz]
+            //book.AddContact("ahmed", "01234567123", 0); //=> reset
+            //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            //book.RemoveContact("ahmed");
+            //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            book.AddContact("ahmed", "01234567891", 0);
+            //book.SetContact("ahmed", "01234567123");
+            //Console.WriteLine(book.GetContact("ahmed"));
+
+
+            book["ahmed"] = "01234567123"; //=> set number
+            Console.WriteLine(book["ahmed"]);
+
+           // Console.WriteLine(book[0]); // => [quiz]
             #endregion
             #endregion
         }
