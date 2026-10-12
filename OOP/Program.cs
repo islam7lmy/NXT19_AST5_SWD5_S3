@@ -95,27 +95,67 @@ namespace OOP
             //getcontact(name); //=> number
             //setcontact(name,number); //if find contact update number
 
-            PhoneBook book = new PhoneBook();
-            //book.names = new string[5]; 
-            //book.numbers = new string[10]; 
+            //PhoneBook book = new PhoneBook();
+            ////book.names = new string[5]; 
+            ////book.numbers = new string[10]; 
 
-            Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
-            //book = new PhoneBook(15);
-            //book.AddContact("ahmed", "01234567891", 0); //=> disable postion make it automatic [quiz]
-            //book.AddContact("ahmed", "01234567123", 0); //=> reset
             //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
-            //book.RemoveContact("ahmed");
+            ////book = new PhoneBook(15);
+            ////book.AddContact("ahmed", "01234567891", 0); //=> disable postion make it automatic [quiz]
+            ////book.AddContact("ahmed", "01234567123", 0); //=> reset
+            ////Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            ////book.RemoveContact("ahmed");
+            ////Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
+            ////book.AddContact("ahmed", "01234567891", 0);
+            //book.AddContact("ahmed", "01234567891");
+            //book.AddContact("ali", "01234567892");
+            //book.AddContact("omr", "01234567893");
+            //book.AddContact("amr", "01234567894");
+            //book.AddContact("amr01", "01234567895");
+            ////book.SetContact("ahmed", "01234567123");
+            ////Console.WriteLine(book.GetContact("ahmed"));
             //Console.WriteLine($"book size : {book.Size} , book elements count : {book.Count}");
-            book.AddContact("ahmed", "01234567891", 0);
-            //book.SetContact("ahmed", "01234567123");
-            //Console.WriteLine(book.GetContact("ahmed"));
 
 
-            book["ahmed"] = "01234567123"; //=> set number
-            Console.WriteLine(book["ahmed"]);
+            //book["ahmed"] = "01234567123"; //=> set number
+            //Console.WriteLine(book["ahmed"]);
 
-           // Console.WriteLine(book[0]); // => [quiz]
+            //// Console.WriteLine(book[0]); // => [quiz]
+
+            //for (int i = 0; i < book.Count; i++)
+            //{
+            //    Console.WriteLine(book[i]);
+            //}
             #endregion
+            #endregion
+
+            #region Class
+            //Car c1;
+            /// declare a reference variable of type Car refer to null
+            /// allocate 4 unitialized bytes in stack
+            /// zero bytes in heap for the object
+            //Console.WriteLine(c1);
+            //c1.Id = 1;
+            //c1.Model = "BMW";
+            //c1.Speed = 320;
+
+            //c1 = new Car();
+            //c1 = new Car(10);
+            //c1 = new Car(10,"BMW");
+            //c1 = new Car(10,"BMW",320);
+            //c1.Id 
+
+
+            //Point p1;
+            // allocate 8 byte unitialized in stack [4 byte X , 4 byte Y]
+            //Console.WriteLine(p1);
+            //p1.X = 10;
+            //p1.Y = 10;
+            //Console.WriteLine(p1);
+
+            //p1 = new Point();
+
+
             #endregion
         }
     }

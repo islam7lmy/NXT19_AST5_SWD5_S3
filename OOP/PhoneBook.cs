@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace OOP
                 int counter = 0;
                 foreach (string name in names)
                 {
-                    if(name is not null)
+                    if (name is not null)
                         counter++;
                 }
                 return counter;
@@ -61,22 +62,35 @@ namespace OOP
 
 
         //addcontact(name,number);
-        public void AddContact(string name, string number ,int _postion)
+        public void AddContact(string name, string number /*,int _postion*/)
         {
-            if(_postion < 0 || _postion >= Size)
-            {
-                Console.WriteLine("the postion you select is out of range");
-                return;
-            }
+            //if(_postion < 0 || _postion >= Size)
+            //{
+            //    Console.WriteLine("the postion you select is out of range");
+            //    return;
+            //}
+            //names[_postion] = name;
+            //numbers[_postion] = number;
 
-            names[_postion] = name;
-            numbers[_postion] = number;
+
+            int index = Array.IndexOf(names, null);
+            if (index == -1)
+            {
+                //Console.WriteLine("Book is full");
+                //return;
+                Resize();
+                index = Count;
+            }
+            names[index] = name;
+            numbers[index] = number;
+
         }
+
         //removecontact(name); //if find contact remove from name arr and number arr
         public void RemoveContact(string name)
         {
             int index = Array.IndexOf(names, name);
-            if(index == -1)
+            if (index == -1)
             {
                 Console.WriteLine("contact not found");
                 return;
@@ -88,7 +102,7 @@ namespace OOP
         ///getter & setter
 
         //getcontact(name); //=> number
-        public string  GetContact(string name)
+        public string GetContact(string name)
         {
             int index = Array.IndexOf(names, name);
             if (index == -1)
@@ -97,8 +111,9 @@ namespace OOP
             }
             return numbers[index];
         }
+
         //setcontact(name,number); //if find contact update number
-        public void SetContact(string name,string number)
+        public void SetContact(string name, string number)
         {
             int index = Array.IndexOf(names, name);
             if (index == -1)
@@ -135,7 +150,30 @@ namespace OOP
             }
         }
 
+        public string this[int i]
+        {
+            get
+            {
+                if (i < 0 || i >= Count)
+                {
+                    return $"index out of range";
+                }
+                return $"{names[i]} => {numbers[i]}";
+            }
+        }
 
         //resize => [quiz] => duplicate capacity
+        private void Resize()
+        {
+            Size *= 2;
+            string[] newnames = new string[Size];
+            string[] newnumbers = new string[Size];
+
+            names.CopyTo(newnames, 0);
+            numbers.CopyTo(newnumbers, 0);
+
+            names = newnames;
+            numbers = newnumbers;
+        }
     }
 }
