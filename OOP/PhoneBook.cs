@@ -10,8 +10,8 @@ namespace OOP
 {
     internal struct PhoneBook
     {
-        string[] names;
-        string[] numbers;
+        public string[] names;
+        public string[] numbers;
 
 
         /// <summary>
@@ -54,6 +54,175 @@ namespace OOP
         }
 
         public PhoneBook(int _size)
+        {
+            Size = _size; //_size < 2 ? 2 : _size;
+            numbers = new string[Size];
+            names = new string[Size];
+        }
+
+
+        //addcontact(name,number);
+        public void AddContact(string name, string number /*,int _postion*/)
+        {
+            //if(_postion < 0 || _postion >= Size)
+            //{
+            //    Console.WriteLine("the postion you select is out of range");
+            //    return;
+            //}
+            //names[_postion] = name;
+            //numbers[_postion] = number;
+
+
+            int index = Array.IndexOf(names, null);
+            if (index == -1)
+            {
+                //Console.WriteLine("Book is full");
+                //return;
+                Resize();
+                index = Count;
+            }
+            names[index] = name;
+            numbers[index] = number;
+
+        }
+
+        //removecontact(name); //if find contact remove from name arr and number arr
+        public void RemoveContact(string name)
+        {
+            int index = Array.IndexOf(names, name);
+            if (index == -1)
+            {
+                Console.WriteLine("contact not found");
+                return;
+            }
+            names[index] = null;
+            numbers[index] = null;
+        }
+
+        ///getter & setter
+
+        //getcontact(name); //=> number
+        public string GetContact(string name)
+        {
+            int index = Array.IndexOf(names, name);
+            if (index == -1)
+            {
+                return "contact not found";
+            }
+            return numbers[index];
+        }
+
+        //setcontact(name,number); //if find contact update number
+        public void SetContact(string name, string number)
+        {
+            int index = Array.IndexOf(names, name);
+            if (index == -1)
+            {
+                Console.WriteLine("contact not found");
+                return;
+            }
+            numbers[index] = number;
+        }
+
+        /// indexer for number  by name
+        /// indexer is a special type of property 
+        /// that allows you to access elements in a collection 
+        public string this[string name]
+        {
+            get
+            {
+                int index = Array.IndexOf(names, name);
+                if (index == -1)
+                {
+                    return "contact not found";
+                }
+                return numbers[index];
+            }
+            set
+            {
+                int index = Array.IndexOf(names, name);
+                if (index == -1)
+                {
+                    Console.WriteLine("contact not found");
+                    return;
+                }
+                numbers[index] = value;
+            }
+        }
+
+        public string this[int i]
+        {
+            get
+            {
+                if (i < 0 || i >= Count)
+                {
+                    return $"index out of range";
+                }
+                return $"{names[i]} => {numbers[i]}";
+            }
+        }
+
+        //resize => [quiz] => duplicate capacity
+        private void Resize()
+        {
+            Size *= 2;
+            string[] newnames = new string[Size];
+            string[] newnumbers = new string[Size];
+
+            names.CopyTo(newnames, 0);
+            numbers.CopyTo(newnumbers, 0);
+
+            names = newnames;
+            numbers = newnumbers;
+        }
+    }
+
+    internal class PhoneBookClass
+    {
+        public string[] names;
+        public string[] numbers;
+
+
+        /// <summary>
+        /// Capacity of PhoneBook [max number of elements can be saved in phonebook]
+        /// </summary>
+        int _size;
+        public int Size
+        {
+            get { return _size; }
+            private set { _size = value < 2 ? 2 : value; }
+        }
+
+        /// <summary>
+        /// number of current elements in phonebook
+        /// </summary>
+        //int count;
+        public int Count
+        {
+            get
+            {
+                int counter = 0;
+                foreach (string name in names)
+                {
+                    if (name is not null)
+                        counter++;
+                }
+                return counter;
+            }
+        }
+
+        ///constructor chanining :
+        ///calling one constructor from another constructor in the same Struct or Class
+
+        //clr => default constructor 
+        public PhoneBookClass() : this(0) // refer to anthor constructor that has one parameter
+        {
+            //Size = default;
+            //numbers = new string[0];
+            //names = new string[0];
+        }
+
+        public PhoneBookClass(int _size)
         {
             Size = _size; //_size < 2 ? 2 : _size;
             numbers = new string[Size];

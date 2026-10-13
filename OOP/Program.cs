@@ -1,4 +1,5 @@
 ﻿using Comman;
+using OOP.Inhertiance;
 //using FirstCode;
 
 namespace OOP
@@ -130,6 +131,7 @@ namespace OOP
             #endregion
 
             #region Class
+            #region EX: Car
             //Car c1;
             /// declare a reference variable of type Car refer to null
             /// allocate 4 unitialized bytes in stack
@@ -140,11 +142,17 @@ namespace OOP
             //c1.Speed = 320;
 
             //c1 = new Car();
+            //Console.WriteLine($"c1 => {{ {c1.Id} , {c1.Model} , {c1.Speed} }}");
             //c1 = new Car(10);
-            //c1 = new Car(10,"BMW");
-            //c1 = new Car(10,"BMW",320);
-            //c1.Id 
+            //Console.WriteLine($"c1 => {{ {c1.Id} , {c1.Model} , {c1.Speed} }}");
+            //c1 = new Car(10, "BMW");
+            //Console.WriteLine($"c1 => {{ {c1.Id} , {c1.Model} , {c1.Speed} }}");
+            //c1 = new Car(10, "BMW", 320);
+            //Console.WriteLine($"c1 => {{ {c1.Id} , {c1.Model} , {c1.Speed} }}");
 
+            //c1 = new Car();
+
+            //c1.Id 
 
             //Point p1;
             // allocate 8 byte unitialized in stack [4 byte X , 4 byte Y]
@@ -153,8 +161,94 @@ namespace OOP
             //p1.Y = 10;
             //Console.WriteLine(p1);
 
-            //p1 = new Point();
+            //p1 = new Point(); 
+            #endregion
+            #region Inhertance
+            //Child c = new Child(10,20);
+            #endregion
+            #region Class vs Struct
+            //Car c1 = new Car();
+            //Car c2 = c1; //shallow copy => both c1 and c2 refer to same object
+            //c2.Id = 99;
+            //Console.WriteLine(c1.Id); // 99 because c1 and c2 refer to the same object in heap
+            ///reference type => stored reference in stack and object in heap
+            ///new => allocate required bytes in heap , initilize the required bytes with default value , Call Constructor , make reference refer to allocated bytes
+            ///constructor => Do Nothing
+            ///default constructor => Clr will generate it if no user-defined constructor exists
+            ///support ineritance => [all access modifers]
+            ///used calss for complex objects and behaviors
 
+
+
+            //Point p1 = new Point();
+            //Point p2 = p1; // deep copy => copy the value of p1 and set it in p2
+            //p2.X = 99;
+            //Console.WriteLine(p1.X); // 0 => because p1 and p2 has different address in stack 
+            ///value type => stored in stack 
+            ///new => Constructor selector 
+            ///constructor => initilize the struct fields with default value
+            ///default constructor => Clr will always generate default constructor
+            ///cannot inherit from anthor => [private , internal , public]
+            ///use for small and simple data => recommanded 16 byte or less
+
+
+            ///phonebook => struct
+            Console.WriteLine("***************************Struct**************************");
+            PhoneBook book = new PhoneBook();
+            book.AddContact("ahmed", "0000000000");
+
+
+            PhoneBook book02 = book;
+
+            //book02.AddContact("ahmed", "0000000000");
+            //Console.WriteLine(book.GetContact("ahmed"));  ///0000000000
+
+            //book02.names = new string[10];
+            //book02.numbers = new string[10];
+            //Console.WriteLine($"{book.names.Length} , {book.numbers.Length}"); // 2
+            //Console.WriteLine($"{book02.names.Length} , {book02.numbers.Length}"); // 10
+
+            book02 = new PhoneBook();
+            Console.WriteLine(book["ahmed"]);
+            Console.WriteLine(book02["ahmed"]);
+
+
+
+            Console.WriteLine("***************************CLASS**************************");
+            
+            PhoneBookClass book03 = new PhoneBookClass();
+            book03.AddContact("ahmed", "0000000000");
+
+
+            PhoneBookClass book04 = book03;
+            //book04.AddContact("ahmed", "0000000000");
+            //Console.WriteLine(book03.GetContact("ahmed")); ///0000000000
+
+            //book04.names = new string[10];
+            //book04.numbers = new string[10];
+            //Console.WriteLine($"{book03.names.Length} , {book03.numbers.Length}"); // 10
+
+            book04 = new PhoneBookClass();
+            Console.WriteLine(book03["ahmed"]);
+            Console.WriteLine(book04["ahmed"]);
+
+            #endregion
+            #endregion
+
+            #region PolyMorphism
+            #region Overloading
+
+            #endregion
+            #region OverRiding
+
+            #endregion
+            #endregion
+
+            #region Binding
+
+            #endregion
+
+            #region Interfeces
 
             #endregion
         }
