@@ -1,5 +1,6 @@
-﻿using Comman;
+﻿//using Comman;
 using OOP.Inhertiance;
+using OOP.PolyMorphism_OverRiding;
 //using FirstCode;
 
 namespace OOP
@@ -193,12 +194,12 @@ namespace OOP
 
 
             ///phonebook => struct
-            Console.WriteLine("***************************Struct**************************");
-            PhoneBook book = new PhoneBook();
-            book.AddContact("ahmed", "0000000000");
+            //Console.WriteLine("***************************Struct**************************");
+            //PhoneBook book = new PhoneBook();
+            //book.AddContact("ahmed", "0000000000");
 
 
-            PhoneBook book02 = book;
+            //PhoneBook book02 = book;
 
             //book02.AddContact("ahmed", "0000000000");
             //Console.WriteLine(book.GetContact("ahmed"));  ///0000000000
@@ -208,19 +209,19 @@ namespace OOP
             //Console.WriteLine($"{book.names.Length} , {book.numbers.Length}"); // 2
             //Console.WriteLine($"{book02.names.Length} , {book02.numbers.Length}"); // 10
 
-            book02 = new PhoneBook();
-            Console.WriteLine(book["ahmed"]);
-            Console.WriteLine(book02["ahmed"]);
+            //book02 = new PhoneBook();
+            //Console.WriteLine(book["ahmed"]);
+            //Console.WriteLine(book02["ahmed"]);
 
 
 
-            Console.WriteLine("***************************CLASS**************************");
-            
-            PhoneBookClass book03 = new PhoneBookClass();
-            book03.AddContact("ahmed", "0000000000");
+            //Console.WriteLine("***************************CLASS**************************");
+
+            //PhoneBookClass book03 = new PhoneBookClass();
+            //book03.AddContact("ahmed", "0000000000");
 
 
-            PhoneBookClass book04 = book03;
+            //PhoneBookClass book04 = book03;
             //book04.AddContact("ahmed", "0000000000");
             //Console.WriteLine(book03.GetContact("ahmed")); ///0000000000
 
@@ -228,29 +229,243 @@ namespace OOP
             //book04.numbers = new string[10];
             //Console.WriteLine($"{book03.names.Length} , {book03.numbers.Length}"); // 10
 
-            book04 = new PhoneBookClass();
-            Console.WriteLine(book03["ahmed"]);
-            Console.WriteLine(book04["ahmed"]);
+            //book04 = new PhoneBookClass();
+            //Console.WriteLine(book03["ahmed"]);
+            //Console.WriteLine(book04["ahmed"]);
 
             #endregion
             #endregion
 
             #region PolyMorphism
             #region Overloading
+            //int x = 10;
+            //x.ToString();
+
+            //int num1 = 10, num2 = 20;
+            //Sum(num1, num2);
+
+            //double num3 = 1.25, num4 = 12.6;
+            //Sum(num3, num4);
+
+            //CalculateTotalForTwoItems();
+            //CalculateTotalForThreeItems();
+            //CalculateTotalWithDiscount();
+            //CalculateTotalWithTax();
 
             #endregion
-            #region OverRiding
 
+            #region OverRiding
+            //Comman.TypeA typeA = new Comman.TypeA();
+
+            //PolyMorphism_OverRiding.TypeA typeA01 = new PolyMorphism_OverRiding.TypeA();
+
+            //TypeA typeA = new TypeA(10);
+            //typeA.MyFun01();
+            //typeA.MyFun02();
+
+            //TypeB typeB = new TypeB(10, 20);
+            //typeB.MyFun01();
+            //typeB.MyFun02();
             #endregion
             #endregion
 
             #region Binding
+            //PolyMorphism_OverRiding.Employee emp;
+            /////allocate 4 byte for reference from type employee in stack refer to null
 
+
+            //emp = new PolyMorphism_OverRiding.Employee();
+            ////allocate object in heap
+
+            #region What is binding
+            /// reference from base type => object from derived type
+            /// 
+            //PolyMorphism_OverRiding.Employee emp;
+            ////emp = new PolyMorphism_OverRiding.Employee(); //not binding
+
+            //emp = new FullTimeEmployee(); //binding
+            //emp.Id = 10;
+            //emp.Name = "Ahmed";
+            //emp.Age = 30;
+            ////emp.Salary = 10; //not valid
+
+            //emp.ShowRole();     //hidding => static => reference method
+            //emp.PrintDetails(); //overriding => dynamic => object method
+
+
+            //emp = new PartTimeEmployee();
+            //emp.Id = 10;
+            //emp.Name = "Ahmed";
+            //emp.Age = 30;
+            ////emp.HourRate = 100; //not valid
+            ////emp.CountOfHour = 20;//not valid
+
+            //emp.ShowRole();     //hidding => static => reference method
+            //emp.PrintDetails(); //hidding => static => reference method
+
+
+            //emp = new FreeLanceEmployee();
+            //emp.Id = 10;
+            //emp.Name = "Ahmed";
+            //emp.Age = 30;
+            ////emp.ProjectPrice = 100; //not valid
+
+            //emp.ShowRole();     
+            //emp.PrintDetails(); 
+
+            ////emp = new DayFullTimeEmployee();
+            ////emp = new NightFullTimeEmployee();
+
+
+            #endregion
+
+            #region Not Binding
+            //FullTimeEmployee emp = (FullTimeEmployee)new PolyMorphism_OverRiding.Employee(); //not binding
+
+            ///animal = dog;
+            ///animal = cat;
+            ///dog =(dog) animal; 
+            #endregion
+
+            #region why Binding
+            ///class memeber method to process employees methods with all types of employees
+            ///calling => showrole , printdetiaild
+
+            //FullTimeEmployee fullTime = new FullTimeEmployee();
+            //PartTimeEmployee partTime = new PartTimeEmployee();
+            //FreeLanceEmployee freeLance = new FreeLanceEmployee();
+            //DayFullTimeEmployee dayFullTime = new DayFullTimeEmployee();
+            //NightFullTimeEmployee nightFullTime = new NightFullTimeEmployee();
+
+            //ProcessEmployee(fullTime);
+            //ProcessEmployee(partTime);
+            //ProcessEmployee(freeLance);
+            //ProcessEmployee(dayFullTime);
+            //ProcessEmployee(nightFullTime);
+
+
+            //FullTimeEmployee fullTime01 = new NightFullTimeEmployee();
+            //fullTime01.ShowRole();
+            //fullTime01.PrintDetails();
+
+            //ProcessEmployee(fullTime01);
+
+            #endregion
+
+            #region More Practise on Binding
+            TypeA typeA = new TypeC(1, 2, 3);
+            typeA.A = 10;
+            //typeA.B = 10; 
+            //typeA.C = 10;
+
+            typeA.MyFun01();
+            typeA.MyFun02();
+
+            TypeB typeB = new TypeC(1,2,3);
+            typeB.A = 10;
+            typeB.B = 10; 
+            //typeB.C = 10;
+
+            typeB.MyFun01();
+            typeB.MyFun02();
+
+
+            TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
+            TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
+            TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
+            TypeD typeD1 = new TypeD(1, 2, 3, 4);
+            TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+
+            typeA1.MyFun02(); //
+            typeB1.MyFun02(); //
+            typeC1.MyFun02(); //
+            typeD1.MyFun02(); //
+            typeD2.MyFun02(); //
+
+            #endregion
             #endregion
 
             #region Interfeces
 
             #endregion
         }
+
+        #region PolyMorphism OverLoading
+        ///1. datatype of parameters
+        ///2. count number of parameters
+        ///3. reorder parameters if not same datatype
+
+        #region Ex :01
+        static int Sum(int x, int y)
+        {
+            return x + y;
+        }
+
+        //static long Sum(int x, int y) //not overloading
+        //{
+        //    return x + y;
+        //}
+
+        static int Sum(short x, int y)
+        {
+            return x + y;
+        }
+
+        static int Sum(int y, short x)
+        {
+            return x + y;
+        }
+
+        static double Sum(double x, double y)
+        {
+            return x + y;
+        }
+        static int Sum(int x, int y, int z)
+        {
+            return x + y + z;
+        }
+        #endregion
+        #region Ex : 02
+        static decimal CalculateTotal(decimal price, int quntity)
+        {
+            return price * quntity;
+        }
+        static decimal CalculateTotal(decimal price, int quntity, decimal discount)
+        {
+            return (price * quntity) - discount;
+        }
+        static decimal CalculateTotal(decimal price, int quntity, decimal discount, decimal Tax)
+        {
+            return ((price * quntity) - discount) + Tax;
+        }
+        #endregion
+
+        #endregion
+
+        #region Binding
+        public static void ProcessEmployee(PolyMorphism_OverRiding.Employee emp)
+        {
+            emp.ShowRole();
+            emp.PrintDetails();
+        }
+
+        //public static void ProcessEmployee(FullTimeEmployee emp)
+        //{
+        //    emp.ShowRole();
+        //    emp.PrintDetails();
+        //}
+
+        //public static void ProcessEmployee(PartTimeEmployee emp)
+        //{
+        //    emp.ShowRole();
+        //    emp.PrintDetails();
+        //}
+
+        //public static void ProcessEmployee(FreeLanceEmployee emp)
+        //{
+        //    emp.ShowRole();
+        //    emp.PrintDetails();
+        //}
+        #endregion
     }
 }
