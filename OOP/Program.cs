@@ -1,5 +1,6 @@
 ﻿//using Comman;
 using OOP.Inhertiance;
+using OOP.Interfaces;
 using OOP.PolyMorphism_OverRiding;
 //using FirstCode;
 
@@ -353,40 +354,89 @@ namespace OOP
             #endregion
 
             #region More Practise on Binding
-            TypeA typeA = new TypeC(1, 2, 3);
-            typeA.A = 10;
-            //typeA.B = 10; 
-            //typeA.C = 10;
+            //TypeA typeA = new TypeC(1, 2, 3);
+            //typeA.A = 10;
+            ////typeA.B = 10; 
+            ////typeA.C = 10;
 
-            typeA.MyFun01();
-            typeA.MyFun02();
+            //typeA.MyFun01();
+            //typeA.MyFun02();
 
-            TypeB typeB = new TypeC(1,2,3);
-            typeB.A = 10;
-            typeB.B = 10; 
-            //typeB.C = 10;
+            //TypeB typeB = new TypeC(1,2,3);
+            //typeB.A = 10;
+            //typeB.B = 10; 
+            ////typeB.C = 10;
 
-            typeB.MyFun01();
-            typeB.MyFun02();
+            //typeB.MyFun01();
+            //typeB.MyFun02();
 
 
-            TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
-            TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
-            TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
-            TypeD typeD1 = new TypeD(1, 2, 3, 4);
-            TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+            //TypeA typeA1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeB typeB1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeC typeC1 = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD1 = new TypeD(1, 2, 3, 4);
+            //TypeD typeD2 = new TypeE(1, 2, 3, 4, 5);
+            //TypeD typeD3 = new TypeF(1, 2, 3, 4, 5);
 
-            typeA1.MyFun02(); //
-            typeB1.MyFun02(); //
-            typeC1.MyFun02(); //
-            typeD1.MyFun02(); //
-            typeD2.MyFun02(); //
+            //typeA1.MyFun02(); //typeC
+            //typeB1.MyFun02(); //typeC
+            //typeC1.MyFun02(); //typeC
+            //typeD1.MyFun02(); //typeD
+            //typeD2.MyFun02(); //typeE
+            //typeD3.MyFun02(); //typeD
 
             #endregion
             #endregion
 
             #region Interfeces
+            #region Ex:01
+            ////IMyType myType = new IMyType(); //not valid 
+            ////IMyType myType = new MyType(); //=> binding
+            //IMyType myType = new MyType(); //=> binding
+            //myType.Salary = 20000;
+            //myType.Myfun();
+            //myType.Print();
 
+            //MyType type = new MyType();
+            //type.Salary = 20000;
+            //type.Myfun();
+            //type.Print(); //not valid 
+            #endregion
+            #region Ex:02
+            ///class member method to print 10 number of series in one line 
+            ///with tabs between numbers => (series , number)
+            // seriesbytwo => 0 2 4 6 8 10 12
+            // seriesbythree => 0 3 6 9 12 15
+            // seriesbyfour => 0 4 8 12 16 20
+            // seriesbyfive => 0 5 10 15 20 25
+            // seriesbyseven
+
+            //SeriesByTwo seriesByTwo = new SeriesByTwo();
+            //PrintNumbersFromSeries(20, seriesByTwo);
+
+            //SeriesBySeven seriesBySeven = new SeriesBySeven();
+            //PrintNumbersFromSeries(20, seriesBySeven);
+
+            //SeriesByFive seriesByFive = new SeriesByFive();
+            //PrintNumbersFromSeries(20, seriesByFive);
+            #endregion
+            #region Implment Interface Implicitly Vs Implment Interface Explicitly
+            #endregion
+            #region Shallow Copy Vs Deep Copy
+            #endregion
+            #region Built-In Interface ICloneable
+            #endregion
+            #region Built-In Interface IComparable
+            #endregion
+            #endregion
+
+            #region Abstract
+            #endregion
+
+            #region Operator Overloading
+            #endregion
+
+            #region User-Defined Casting Operator
             #endregion
         }
 
@@ -465,6 +515,56 @@ namespace OOP
         //{
         //    emp.ShowRole();
         //    emp.PrintDetails();
+        //}
+        #endregion
+
+        #region Interface
+        public static void PrintNumbersFromSeries(int number, ISeries series)
+        {
+            for (int i = 0; i < number; i++)
+            {
+                Console.Write(series.Current);
+                Console.Write("\t");
+                series.GetNext();
+            }
+            Console.WriteLine();
+            series.Reset();
+        }
+
+        //public static void PrintNumbersFromSeries(int number , SeriesByTwo series)
+        //{
+        //    for (int i = 0; i < number; i++)
+        //    {
+        //        Console.Write(series.Current);
+        //        Console.Write("\t");
+        //        series.GetNext();
+        //    }
+        //    Console.WriteLine();
+        //    series.Reset();
+        //}
+
+        //public static void PrintNumbersFromSeries(int number, SeriesByThree series)
+        //{
+        //    for (int i = 0; i < number; i++)
+        //    {
+        //        Console.Write(series.Current);
+        //        Console.Write("\t");
+        //        series.GetNext();
+        //    }
+        //    Console.WriteLine();
+        //    series.Reset();
+        //}
+
+        //public static void PrintNumbersFromSeries(int number, SeriesBySeven series)
+        //{
+        //    for (int i = 0; i < number; i++)
+        //    {
+        //        Console.Write(series.Current);
+        //        Console.Write("\t");
+        //        series.GetNext();
+        //    }
+        //    Console.WriteLine();
+        //    series.Reset();
         //}
         #endregion
     }

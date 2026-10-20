@@ -108,4 +108,17 @@ namespace OOP.PolyMorphism_OverRiding
             Console.WriteLine($"TypeE : A = {A} , B = {B} , C = {C}, D = {D} , E = {E}");
         }
     }
+
+    class TypeF : TypeD
+    {
+        public int F { get; set; }
+        public TypeF(int _a, int _b, int _c, int _d, int _f) : base(_a, _b, _c, _d)
+        {
+            F = _f;
+        }
+        public new void MyFun02()
+        {
+            Console.WriteLine($"TypeF : A = {A} , B = {B} , C = {C}, D = {D} , F = {F}");
+        }
+    }
 }
