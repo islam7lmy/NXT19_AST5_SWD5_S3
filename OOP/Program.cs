@@ -2,6 +2,7 @@
 using OOP.Inhertiance;
 using OOP.Interfaces;
 using OOP.PolyMorphism_OverRiding;
+using System.Runtime.InteropServices;
 //using FirstCode;
 
 namespace OOP
@@ -421,12 +422,169 @@ namespace OOP
             //PrintNumbersFromSeries(20, seriesByFive);
             #endregion
             #region Implment Interface Implicitly Vs Implment Interface Explicitly
+            //Interfaces.Car car = new Interfaces.Car();
+            //car.Speed = 20;
+            //car.Forward();
+            //car.Backward();
+            //car.Left();
+            //car.Right();
+
+            //AirPlan airPlan = new AirPlan();
+            //airPlan.Speed = 60;
+            //Console.WriteLine("After Moving");
+            //IMoveable moveablePlan = airPlan;
+            //moveablePlan.Forward();
+            //moveablePlan.Backward();
+            //moveablePlan.Left();
+            //moveablePlan.Right();
+            //moveablePlan.Speed = 100;
+            //Console.WriteLine("After Flying");
+            //IFlyable flyablePlan = airPlan;
+            //flyablePlan.Forward();
+            //flyablePlan.Left();
+            //flyablePlan.Right();
+            //flyablePlan.Speed = 600;
+
             #endregion
             #region Shallow Copy Vs Deep Copy
+            //int x = 10;
+            //int y = 20;
+            //y = x;
+            //y = 30;
+            //Console.WriteLine(x);
+            //Console.WriteLine(y);
+
+            //int[] Arr01 = { 1, 2, 3 };
+            //int[] Arr02 = { 4, 5, 6 };
+            //Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+            #region Shallow copy
+            //Arr02 = Arr01;
+            //Console.WriteLine("After Shallow Copy");
+            //Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+
+            //Arr02[0] = 99;
+            //Console.WriteLine(Arr01[0]);
+
+            #endregion
+            #region Deep Copy
+            ////int x =(int) new object(); //unboxing
+            //Arr02 = (int[]) Arr01.Clone();
+            //Console.WriteLine("After Deep Copy");
+            //foreach (int item in Arr02)
+            //{
+            //    Console.Write($"{item} \t");
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine($"Arr01 = {Arr01.GetHashCode()}");
+            //Console.WriteLine($"Arr02 = {Arr02.GetHashCode()}");
+            //Arr02[0] = 99;
+            //Console.WriteLine(Arr01[0]);
+            #endregion
             #endregion
             #region Built-In Interface ICloneable
+            //Interfaces.Employee emp01 = new Interfaces.Employee();
+            //emp01.Id = 10;
+            //emp01.Name = "Ahmed";
+            //emp01.Salary = 10000;
+            //emp01.Address = "cairo";
+
+            //Interfaces.Employee emp02 = new Interfaces.Employee()
+            //{
+            //    Id = 30,
+            //    Name = "omr",
+            //    Salary = 15000,
+            //    Address = "cairo"
+            //};
+
+            //Console.WriteLine($"Emp01 : {emp01.GetHashCode()}");
+            //Console.WriteLine($"Emp02 : {emp02.GetHashCode()}");
+
+            //emp02 = Interfaces.Employee.DeepCopy(emp01); //=> copy object not reference
+
+            //Console.WriteLine("After Deep Copy");
+            //Console.WriteLine($"Emp01 : {emp01.GetHashCode()}");
+            //Console.WriteLine($"Emp02 : {emp02.GetHashCode()}");
+
+            //Console.WriteLine(emp01);
+            //Console.WriteLine(emp02);
+
+            //emp02.Id = 100;
+            //Console.WriteLine(emp01.Id);
+
+            //Interfaces.Car[] cars = new Interfaces.Car[5];
+            //Interfaces.Employee[] employees = new Interfaces.Employee[5];
+            //deepycopyArray(cars);
+            //deepycopyArray(employees);
+
             #endregion
             #region Built-In Interface IComparable
+            //int[] arr = { 9, 8, 11, 7, 2, 3, 4, 5, 1 };
+            ////Array.Sort(arr);
+
+
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    for (int j = 0; j < arr.Length - i - 1; j++)
+            //    {
+            //        if (arr[j] > arr[j + 1])
+            //            Swap(ref arr[j], ref arr[j + 1]);
+            //    }
+            //}
+
+            //foreach (int item in arr)
+            //{
+            //    Console.Write($"{item} \t");
+            //}
+            //Console.WriteLine();
+
+
+            //string[] strings = { "omr", "ahmed", "ali" };
+            ////Array.Sort(strings);
+
+
+            //for (int i = 0; i < strings.Length; i++)
+            //{
+            //    for (int j = 0; j < strings.Length - i - 1; j++)
+            //    {
+            //        if (strings[j].CompareTo(strings[j + 1]) > 0)
+            //            Swap(ref strings[j], ref strings[j + 1]);
+            //    }
+            //}
+
+            //foreach (string item in strings)
+            //{
+            //    Console.Write($"{item} \t");
+            //}
+            //Console.WriteLine();
+
+
+            //Interfaces.Employee[] employees =
+            //{
+            //    new Interfaces.Employee() { Id = 10 , Name = "Ahmed" , Address = "Cairo", Salary = 10_000},
+            //    new Interfaces.Employee() { Id = 20 , Name = "Ali" , Address = "Alex", Salary = 4_000},
+            //    new Interfaces.Employee() { Id = 30 , Name = "Omar" , Address = "Asyut", Salary = 8_000},
+            //    new Interfaces.Employee() { Id = 40 , Name = "Amr" , Address = "Fayoum", Salary = 5_000},
+            //};
+
+            ////Array.Sort(employees);
+
+
+            //for (int i = 0; i < employees.Length; i++)
+            //{
+            //    for (int j = 0; j < employees.Length - i - 1; j++)
+            //    {
+            //        if (employees[j].CompareTo(employees[j + 1]) > 0)
+            //            Swap(ref employees[j], ref employees[j + 1]);
+            //    }
+            //}
+
+            //foreach (Interfaces.Employee item in employees)
+            //{
+            //    Console.Write($"{item} \t");
+            //}
+            //Console.WriteLine();
             #endregion
             #endregion
 
@@ -566,6 +724,66 @@ namespace OOP
         //    Console.WriteLine();
         //    series.Reset();
         //}
+
+        //public static void deepycopyArray(ICloneable[] oldcloneables) 
+        //{
+        //    //ICloneable[] cloneables; //= //new object[oldcloneables.Length];
+        //    foreach (ICloneable item in oldcloneables)
+        //    {
+        //        object obj = item.Clone();
+        //    }
+        //}
+
+        public static void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Swap(ref string a, ref string b)
+        {
+            string temp = a;
+            a = b;
+            b = temp;
+        }
+        public static void Swap(ref Interfaces.Employee a, ref Interfaces.Employee b)
+        {
+            Interfaces.Employee temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static void Swap(ref IComparable a, ref IComparable b)
+        {
+            IComparable temp = a;
+            a = b;
+            b = temp;
+        }
+
+        //public static void Sorting(object[] arr)
+        //{
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        for (int j = 0; j < arr.Length - i - 1; j++)
+        //        {
+        //            if (arr[j].CompareTo(arr[j + 1]) > 0)
+        //                Swap(ref arr[j], ref arr[j + 1]);
+        //        }
+        //    }
+        //}
+
+        public static void Sorting(IComparable[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+                    if (arr[j].CompareTo(arr[j + 1]) > 0)
+                        Swap(ref arr[j], ref arr[j + 1]);
+                }
+            }
+        }
         #endregion
     }
 }
