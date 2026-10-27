@@ -1,6 +1,8 @@
-﻿//using Comman;
+﻿using Comman;
+using OOP.Abstraction;
 using OOP.Inhertiance;
 using OOP.Interfaces;
+using OOP.OperatorOverLoading;
 using OOP.PolyMorphism_OverRiding;
 using System.Runtime.InteropServices;
 //using FirstCode;
@@ -517,7 +519,6 @@ namespace OOP
             //Interfaces.Employee[] employees = new Interfaces.Employee[5];
             //deepycopyArray(cars);
             //deepycopyArray(employees);
-
             #endregion
             #region Built-In Interface IComparable
             //int[] arr = { 9, 8, 11, 7, 2, 3, 4, 5, 1 };
@@ -589,9 +590,35 @@ namespace OOP
             #endregion
 
             #region Abstract
+            ////BaseShape shape = new BaseShape(); //not valid
+
+            ////Squere squere = new Squere();
+            //Squere squere = new Squere(10);
+            ////squere.Side = 20; //not valid
+
+            //squere = new Squere(0);
+            //Console.WriteLine(squere.Perimeter);
+            //Console.WriteLine(squere.Area);
+
+            //Rectangle rectangle = new Rectangle(20,10);
+            ////rectangle.Width = 20; rectangle.Height = 10;
+            //Console.WriteLine(rectangle.Perimeter);
+            //Console.WriteLine(rectangle.Area);
+
+            //SeriesByTwo seriesByTwo = new SeriesByTwo();
+            ////seriesByTwo.Current = 20; //not valid in => private protected
+            ////seriesByTwo.Current = 20; //not valid in => protected
+            ////seriesByTwo.Current = 20; //not valid in => protected internal
             #endregion
 
             #region Operator Overloading
+            //Complex c1 = new Complex(1, 2);
+            //Complex c2 = new Complex(3, 4);
+            //Complex c3 = new Complex(5, 6);
+            //Complex c5 = default;
+
+            //Complex c4 = c1 + c2 + c3 + c5;
+            //Console.WriteLine(c4);
             #endregion
 
             #region User-Defined Casting Operator
