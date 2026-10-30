@@ -619,10 +619,149 @@ namespace OOP
 
             //Complex c4 = c1 + c2 + c3 + c5;
             //Console.WriteLine(c4);
+
+            //Console.WriteLine(c1++); //print => 1+2i then value => 2+3i
+            //Console.WriteLine(++c1); //value => 3+4i then print => 3+4i
+            //Console.WriteLine(c1--); //print => 3+4i then value => 2+3i
+            //Console.WriteLine(--c1); //value => 1+2i then print => 1+2i
+            //Console.WriteLine(c1);   //print => 1+2i
+
+
+            #region Equals and GetHashcode
+            //int x = 10;
+            //int y = 10;
+            //Console.WriteLine(x.GetHashCode());
+            //Console.WriteLine(y.GetHashCode());
+
+            //if(x.Equals(y))
+            //    Console.WriteLine("equals");
+            //else
+            //    Console.WriteLine("not equals");
+
+
+            //Complex c1 = new Complex(1, 2);
+            //Complex c2 = new Complex(1, 2);
+
+            //Console.WriteLine(c1.GetHashCode());
+            //Console.WriteLine(c2.GetHashCode());
+
+            ////default => compare hashcode == hashcode
+            //if (c1 == c2)
+            //    Console.WriteLine("equal");
+            //else
+            //    Console.WriteLine("not equal");
+
+
+            //HashSet<Complex> complexes = new HashSet<Complex>();
+            //complexes.Add(c1);
+            //complexes.Add(c2);
+            //Console.WriteLine(complexes.Count);
+
+            //if (c1.Equals(c2))
+            //    Console.WriteLine("equal");
+            //else
+            //    Console.WriteLine("not equal");
+
+
+            ///obj1.gethashcode == obj1.gethashcode  => true
+            ///obj1.equals(obj2) == true
+
+            /// any tow equals object must have same hashcode
+            /// but if two object has same hashcode my be equals or not
+
+            //string x = "ahmed"; //string x = new string("ahmed");
+            //string y = "ahmed"; //string y = new string("ahmed");
+
+            //if (x == y)
+            //    Console.WriteLine("equal");
+            //else
+            //    Console.WriteLine("not equal");
+
+
+            //if (x.Equals(y))
+            //    Console.WriteLine("equal");
+            //else
+            //    Console.WriteLine("not equal");
+
+            //Console.WriteLine(x.GetHashCode());
+            //Console.WriteLine(y.GetHashCode());
+
+
+
+            #endregion
             #endregion
 
             #region User-Defined Casting Operator
+            OperatorOverLoading.Employee emp = new OperatorOverLoading.Employee()
+            {
+                Id = 102030,
+                FirstName = "Ahmed",
+                LastName = "Mohmed",
+                BirthDate = new DateOnly(2000, 03, 15),
+                Salary = 10_000,
+                Address = new Address() { AddressDetails = "el galaa street", City = "cairo", Country = "egypt" }
+            };
+
+            #region Deep Copy, equals and gethashcode example 
+            //OperatorOverLoading.Employee emp01 = emp;
+
+            //OperatorOverLoading.Employee emp02 = (OperatorOverLoading.Employee)emp.Clone();
+            //emp02.Id = 20;
+            //emp02.Address.City = "Banha";
+
+            //Console.WriteLine(emp.Id);
+            //Console.WriteLine(emp.Address.City);
+
+            //if (emp.Equals(emp02))
+            //    Console.WriteLine("equals");
+            //else
+            //    Console.WriteLine("not equals");
+
+            //if (emp == emp02)
+            //    Console.WriteLine("equals");
+            //else
+            //    Console.WriteLine("not equals");
+
+            //Console.WriteLine(emp.GetHashCode());
+            //Console.WriteLine(emp02.GetHashCode()); 
             #endregion
+
+            //EmployeeViewModel empview = new EmployeeViewModel()
+            //{
+            //    FullName = $"{emp.FirstName} {emp.LastName}",
+            //    Age = DateTime.Now.Year - emp.BirthDate.Year,
+            //    Address = $"{emp.Address.AddressDetails}, {emp.Address.City}, {emp.Address.Country}",
+            //    NetSalary = emp.Salary - emp.Detuctions
+            //};
+
+            //EmployeeViewModel empview01 = new EmployeeViewModel(emp);
+            //Console.WriteLine(empview01);
+
+            ////EmployeeViewModel empview02 = emp; //implicit cast not recommended => readiblity
+            ////Console.WriteLine(empview02);
+
+            //EmployeeViewModel empview03 = (EmployeeViewModel)emp; //Explicit recommended => readiblity
+            //Console.WriteLine(empview03);
+
+            //EmployeeViewModel empview04 = emp.ToEmployeeViewModel(); //Extintion method
+            //Console.WriteLine(empview04);
+
+            //EmployeeViewModel empview05 = EmployeeExtintions.ToEmployeeViewModel(emp); //Static method
+            //Console.WriteLine(empview05);
+
+
+            //int x = 10;
+            //double y = 10.25;
+            //y = x; //implicit casting
+            //x.Add(2);
+            //Extintions.Add(x, 2);
+
+            #endregion
+
+            ///genircs
+            ///delegate
+            ///event
+            ///EF
         }
 
         #region PolyMorphism OverLoading

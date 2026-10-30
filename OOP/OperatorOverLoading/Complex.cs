@@ -27,6 +27,8 @@ namespace OOP.OperatorOverLoading
             return $"{Real} + {Imag}i";
         }
 
+        
+
         ///operator overloading
         public static Complex operator +(Complex a, Complex b)
         {
@@ -51,9 +53,90 @@ namespace OOP.OperatorOverLoading
 
         ////[quiz]
         /// -
+        public static Complex operator -(Complex a, Complex b)
+        {
+            return new Complex()
+            {
+                Real = (a?.Real ?? 0) - (b?.Real ?? 0),
+                Imag = (a?.Imag ?? 0) - (b?.Imag ?? 0)
+            };
+
+        }
+
         /// ++
+        public static Complex operator ++(Complex a)
+        {
+            return new Complex()
+            {
+                Real = (a?.Real ?? 0) + 1,
+                Imag = (a?.Imag ?? 0) + 1
+            };
+
+        }
         /// --
+        public static Complex operator --(Complex a)
+        {
+            return new Complex()
+            {
+                Real = (a?.Real ?? 0) - 1,
+                Imag = (a?.Imag ?? 0) - 1
+            };
+
+        }
+
         /// >
+        public static bool operator >(Complex a, Complex b)
+        {
+            if ((a?.Real ?? 0) == (b?.Real ?? 0))
+                return (a?.Imag ?? 0) > (b?.Imag ?? 0);
+
+            return (a?.Real ?? 0) > (b?.Real ?? 0);
+        }
+
+        public static bool operator <(Complex a, Complex b)
+        {
+            if ((a?.Real ?? 0) == (b?.Real ?? 0))
+                return (a?.Imag ?? 0) < (b?.Imag ?? 0);
+
+            return (a?.Real ?? 0) < (b?.Real ?? 0);
+        }
+
         /// ==
+        public static bool operator ==(Complex a, Complex b)
+        {
+            if ((a?.Real ?? 0) == (b?.Real ?? 0))
+                return (a?.Imag ?? 0) == (b?.Imag ?? 0);
+
+            return false;
+        }
+
+        public static bool operator !=(Complex a, Complex b)
+        {
+            return !(a == b);
+        }
+
+        //public override bool Equals(object? obj)
+        //{
+        //    Complex complex = (Complex)obj;
+        //    //this => calling object
+        //    return (this == complex);
+        //}
+
+        //public override int GetHashCode()
+        //{
+        //    return HashCode.Combine(Real , Imag);
+        //}
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Complex complex &&
+                   Real == complex.Real &&
+                   Imag == complex.Imag;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Real, Imag);
+        }
     }
 }
