@@ -1,9 +1,12 @@
 ﻿using Comman;
 using OOP.Abstraction;
+using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.Interfaces;
 using OOP.OperatorOverLoading;
 using OOP.PolyMorphism_OverRiding;
+using OOP.Sealed;
+using OOP.Static;
 using System.Runtime.InteropServices;
 //using FirstCode;
 
@@ -692,15 +695,15 @@ namespace OOP
             #endregion
 
             #region User-Defined Casting Operator
-            OperatorOverLoading.Employee emp = new OperatorOverLoading.Employee()
-            {
-                Id = 102030,
-                FirstName = "Ahmed",
-                LastName = "Mohmed",
-                BirthDate = new DateOnly(2000, 03, 15),
-                Salary = 10_000,
-                Address = new Address() { AddressDetails = "el galaa street", City = "cairo", Country = "egypt" }
-            };
+            //OperatorOverLoading.Employee emp = new OperatorOverLoading.Employee()
+            //{
+            //    Id = 102030,
+            //    FirstName = "Ahmed",
+            //    LastName = "Mohmed",
+            //    BirthDate = new DateOnly(2000, 03, 15),
+            //    Salary = 10_000,
+            //    Address = new Address() { AddressDetails = "el galaa street", City = "cairo", Country = "egypt" }
+            //};
 
             #region Deep Copy, equals and gethashcode example 
             //OperatorOverLoading.Employee emp01 = emp;
@@ -758,7 +761,124 @@ namespace OOP
 
             #endregion
 
+            #region Static
+            //Console.WriteLine(Utility.PI);
+            //Console.WriteLine(Utility.CalculateCircleArea(10));
+            #endregion
+
+            #region Sealed
+            //GrandChild grandChild = new GrandChild();
+            //grandChild.Salary = 10_000;
+            //grandChild.Print();
+
+            //Console.WriteLine(grandChild.Salary);
+
+
+            //Sealed.Child  child = grandChild;
+            //Console.WriteLine(child.Salary);
+            //child.Print();
+            #endregion
+
             ///genircs
+            #region Generics
+            #region Ex01:Swap
+            #region NonGenerics
+            //int num1 = 10, num2 = 20;
+            //object obj1 = num1, obj2 = num2; //boxing => value type => reference type
+            ////Helper.Swap(ref num1, ref  num2); //boxing => value type => reference type
+            //Helper.Swap(ref obj1, ref obj2); //boxing => value type => reference type
+            //num1 = (int)obj1; //unboxing => reference type => value type
+            //num2 = (int)obj2; //unboxing => reference type => value type
+            //Console.WriteLine($"num1 : {num1}, num2 : {num2}");
+
+
+            //double num3 = 10.5, num4 = 20.5;
+            //object obj3 = num3, obj4 = num4; //boxing => value type => reference type
+            ////Helper.Swap(ref num3, ref num4);
+            //Helper.Swap(ref obj3, ref obj4);
+            //num3 = (double)obj3; //unboxing => reference type => value type
+            //num4 = (double)obj4; //unboxing => reference type => value type
+            //Console.WriteLine($"num3 : {num3}, num4 : {num4}");
+
+            //string str1 = "ahmed", str2 = "ali";
+            //object obj5 = str1, obj6 = str2;
+            //Helper.Swap(ref obj5, ref obj6);
+            ////Helper.Swap(ref str1, ref str2);
+            //str1 = (string)obj5;
+            //str2 = (string)obj6;
+            //Console.WriteLine($"str1 : {str1}, str2 : {str2}");   
+            #endregion
+            #region Generics
+            //int num1 = 10, num2 = 20;
+            //Helper.Swap<int>(ref num1, ref num2);
+            //Console.WriteLine($"num1 : {num1}, num2 : {num2}");
+
+
+            //string str1 = "Ahmed", str2 = "Mohmed";
+            ////Helper.Swap<string>(ref str1, ref str2);
+            //Helper.Swap(ref str1, ref str2);
+            //Console.WriteLine($"str1 : {str1}, str2 : {str2}");
+
+            ///not valid => because T is int and U is double
+            //int num5 = 10;
+            //double num6 = 20.5;
+            //Helper.Swap<int, double>(ref num5, ref num6);
+            #endregion
+            #endregion
+            #region Ex02: SearchArray 
+            ////int[] numbers = { 5, 3, 2, 19, 4, 10, 1, 4 };
+            ////int Postion = Array.IndexOf(numbers, 4);
+            ////int Postion2 = Helper.SearchArray(numbers, 4);
+            ////Console.WriteLine(Postion);
+            ////Console.WriteLine(Postion2);
+
+            //Generics.Point[] points =
+            //{ 
+            //    new Generics.Point(1, 2),
+            //    new Generics.Point(3, 4),
+            //    new Generics.Point(5, 6),
+            //    new Generics.Point(7, 8)
+            //};
+
+            ////Generics.Point pointToFind = new Generics.Point(5, 6);
+
+            ////Console.WriteLine(pointToFind.GetHashCode());
+            ////Console.WriteLine(points[2].GetHashCode());
+
+            ////if(pointToFind.Equals(points[2]))
+            ////{
+            ////    Console.WriteLine("Equals");
+            ////}
+            ////else
+            ////{
+            ////    Console.WriteLine("Not Equals");
+            ////}
+
+            //int Postion3 = Array.IndexOf(points, new Generics.Point(5, 6));
+            //int Postion4 = Helper.SearchArray(points, new Generics.Point(5, 6));
+            //Console.WriteLine(Postion3);
+            //Console.WriteLine(Postion4);
+
+            #endregion
+            #region Ex03: GetMax
+            ////Quiz
+            //Generics.Point[] points =
+            //{
+            //    new Generics.Point(1, 2),
+            //    new Generics.Point(3, 4),
+            //    new Generics.Point(5, 6),
+            //    new Generics.Point(7, 8)
+            //};
+            //Generics.Point Max = Helper.GetMax(points);
+
+
+            //int[] numbers = { 5, 3, 2, 19, 4, 10, 1, 4 };
+            //int max = Helper.GetMax(numbers);
+            #endregion
+
+            #endregion
+
+
             ///delegate
             ///event
             ///EF
