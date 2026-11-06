@@ -114,5 +114,80 @@ namespace OOP.Generics
         }
         #endregion
         #endregion
+
+        #region Ex03: GetMax
+        public static T GetMax<T>(T[] arr) where T : IComparable<T>
+        {
+            T max = arr[0];
+            foreach (T item in arr)
+            {
+                if(item.CompareTo(max) > 0)
+                    max = item;
+            }
+            return max;
+        }
+        #endregion
+
     }
+
+    #region Constraints
+    public class Repository<T> where T : class,IComparable<T>
+    {
+
+    }
+    public class Repository02<T> where T : notnull
+    {
+
+    }
+    public class Calculater<T> where T : struct
+    {
+
+    }
+
+    public class Factory<T> where T : new()
+    {
+        public T CreateInstance()
+        {
+            return new T();
+        }
+    }
+    #endregion
+
+    #region BaseClass
+    class Employee
+    {
+        public string Name { get; set; }
+    }
+
+    class Manager : Employee
+    {
+
+    }
+
+    class Developer : Employee
+    {
+
+    }
+    class EmployeeService<T> where T : Employee
+    {
+        public void PrintEmployeeName(T employee)
+        {
+            Console.WriteLine($"Employee Name: {employee.Name}");
+        }
+    }
+
+    class Animal
+    {
+
+    }
+    class Dog : Animal { }
+
+    class AnimalContaner<T,U> where T : U
+    {
+        public AnimalContaner(T dog)
+        {
+            U animal = dog;
+        }
+    }
+    #endregion
 }

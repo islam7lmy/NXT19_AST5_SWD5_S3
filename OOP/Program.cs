@@ -1,5 +1,6 @@
 ﻿using Comman;
 using OOP.Abstraction;
+using OOP.Delegates;
 using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.Interfaces;
@@ -7,6 +8,7 @@ using OOP.OperatorOverLoading;
 using OOP.PolyMorphism_OverRiding;
 using OOP.Sealed;
 using OOP.Static;
+using System.Collections;
 using System.Runtime.InteropServices;
 //using FirstCode;
 
@@ -14,8 +16,19 @@ namespace OOP
 {
     internal class Program
     {
+        //new Delegate (Class), the reference from this Delegate Can refer to a function or more than function [pointer to function]
+        //these function may be class-member function [static] or object-member function [non-static]
+        //but these function must have the same signature of delegate
+        //regardless function access modifier regardless naming(Return type, parameters)
+        //ref from delegate have object of delegate that has target and this target has function 
+
+        //step 0. Delegate Declare
+        public delegate int StringFuncDelegate(string str);
+
+
         static void Main(string[] args)
         {
+            #region OOP
             #region Access Modifiers
             ///1. private
             ///2. private protected => inhertance
@@ -861,7 +874,7 @@ namespace OOP
 
             #endregion
             #region Ex03: GetMax
-            ////Quiz
+            //////Quiz
             //Generics.Point[] points =
             //{
             //    new Generics.Point(1, 2),
@@ -877,9 +890,84 @@ namespace OOP
             #endregion
 
             #endregion
+            #endregion
 
 
             ///delegate
+            #region Delegate
+            #region EX:01
+            //////Delegate Is a C# Language Feature
+            //////has 2 Usages:-
+            ////// 1. functional programming [stratigay design pattern] => (pass function as parameter, return function, can save function into variable[address of function])
+            ////// 2. Event-Driven Programming [observer design pattern]
+
+            //////step 1. Declare ref From Delegate
+            //StringFuncDelegate reference;
+
+            //////step 2. intial the delegate reference [pointer of function]
+            ////reference = new StringFuncDelegate(StringFunction.GetCountOfUpperCaseChar);
+            //reference = StringFunction.GetCountOfUpperCaseChar; // syntax sugger
+            //reference += StringFunction.GetCountOfUpperCaseChar;
+            //reference += StringFunction.GetCountOfLowerCaseChar;
+            //reference -= StringFunction.GetCountOfUpperCaseChar;
+            //reference -= StringFunction.GetCountOfUpperCaseChar;
+            //reference -= StringFunction.GetCountOfUpperCaseChar;
+            //reference -= StringFunction.GetCountOfLowerCaseChar;
+
+
+            //////step 3. use the Delegate Reference
+            //int res = reference?.Invoke("Ahmed Ali") ?? 0;
+            ////int res02 = reference("Ahmed Ali");
+
+            //Console.WriteLine(res); 
+            #endregion
+            #region Ex:02
+            //double[] numbers = { 8, 2, 7, 10, 7, 3, 5, 1, 4, 6 };
+            //SortingAlgorithm.BubbleSortingWithType(numbers, SortingTypes.SortAsc);
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+            //SortingAlgorithm.BubbleSortingWithType(numbers, SortingTypes.SortDesc);
+
+            //foreach (var item in numbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+
+            //string[] Names = { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //SortingAlgorithm.BubbleSortingWithType<string>(Names, SortingTypes.SortDesc);
+            #endregion
+            #region Ex:03
+            ////List<int> numbers = new List<int> { 7, 8, 10, 11, 12 };
+            ////ArrayList arrayList = new ArrayList { "Ahmed", 15, 12.25 };
+
+            //List<int> numbers = Enumerable.Range(0, 100).ToList();
+            //List<int> OddNumbers = NumberFinding.FindNumbers<int>(numbers, (GenericsNumberFindingFuncDelegate<int>)NumberConditions.IsOdd);
+            //List<int> EvenNumbers = NumberFinding.FindNumbers(numbers, (GenericsNumberFindingFuncDelegate<int>)NumberConditions.IsEven);
+            //List<int> BySevenNumbers = NumberFinding.FindNumbers(numbers, (NumberFindingFuncDelegate)NumberConditions.IsDivisibleBySeven);
+
+
+
+            //List<string> Names = new List<string>() { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //List<string> strings = NumberFinding.FindNumbers(Names, (EnhanceGenericsNumberFindingFuncDelegate<string, bool>)NumberConditions.CheckLength);
+            #endregion
+            #region BuiltIn Delegates [Predicate,func,action]
+            //delegete is c# language feature use to apply features in functional programing
+            //there are 3 built in delegete :
+
+            //1.Predicate  => takes one input parameter and returns a boolean - true or false.is a special kind of Func. It represents a method that contains a set of criteria mostly defined inside an if condition and checks whether the passed parameter meets those criteria or not.
+
+            //2.Action     => takes zero, one or more input parameters, but does not return anything.
+
+            //3.Func       => takes zero, one or more input parameters, and returns a value (with its out parameter)
+
+            #endregion
+            #endregion
             ///event
             ///EF
         }

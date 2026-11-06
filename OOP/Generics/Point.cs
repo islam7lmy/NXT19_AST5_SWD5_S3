@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP.Generics
 {
-    internal class Point
+    internal class Point : /*IComparable,*/IComparable<Point>
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -41,6 +41,27 @@ namespace OOP.Generics
         public override int GetHashCode()
         {
             return HashCode.Combine(X, Y);
+        }
+
+        //public int CompareTo(object? obj)
+        //{
+        //    Point p = (Point)obj;
+        //    if (p is null)
+        //        return 1;
+        //    if (this.X == p.X && Y == p.Y)
+        //        return 0;
+        //    else
+        //        return X.CompareTo(p.X);
+        //}
+
+        public int CompareTo(Point? other)
+        {
+            if (other is null)
+                return 1;
+            if (this.X == other.X && Y == other.Y)
+                return 0;
+            else
+                return X.CompareTo(other.X);
         }
     }
 }
