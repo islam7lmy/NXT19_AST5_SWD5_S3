@@ -1,6 +1,7 @@
 ﻿using Comman;
 using OOP.Abstraction;
 using OOP.Delegates;
+using OOP.Events;
 using OOP.Generics;
 using OOP.Inhertiance;
 using OOP.Interfaces;
@@ -892,8 +893,6 @@ namespace OOP
             #endregion
             #endregion
 
-
-            ///delegate
             #region Delegate
             #region EX:01
             //////Delegate Is a C# Language Feature
@@ -966,12 +965,183 @@ namespace OOP
 
             //3.Func       => takes zero, one or more input parameters, and returns a value (with its out parameter)
 
+            #region Example - 01 => BuiltIn Predicate in NumberFinding Class 
+            //List<int> Numbers = Enumerable.Range(0, 100).ToList();
+            //Predicate<int> numberDelegate = NumberConditions.IsOdd;
+            //List<int> oddnumber = NumberFinding.FindNumbers(Numbers, numberDelegate);
+            #endregion
+            #region  Example - 02 => BuiltIn Func in SortingAlgorithm Class
+            //string[] Names = { "Ali", "Mahmoud", "Omar", "Ahmed" };
+            //Func<string, string, bool> Reference = SortingTypes.SortAsc;
+            //SortingAlgorithm.BubbleSortingWithType(Names, Reference);
+            #endregion
+            #region Example - 03 => BuiltIn Action
+            //Action action;
+            //action = SomeFunction.Print;
+            //action();
+
+
+            //Action<string> action01;
+            //action01 = SomeFunction.Print;
+            //action01("ali");
             #endregion
             #endregion
+            #region Anonymous Function
+            // Anonymous Function : c# 2.0 Feature (.net framework 2.0 [2005])
+
+            //Predicate<string> predicate;
+            ////predicate = SomeFunction.test;
+            ////Console.WriteLine(predicate("Ahmed"));
+            ////predicate = /*public*/ /*static*/ /*bool*/ /*test*/ delegate (string str) { return str.Length > 1; };
+            //predicate = delegate (string str) { return str.Length > 1; };
+            //predicate("ali");
+
+
+            ////Action action;
+            ////action = SomeFunction.Print;
+            ////action();
+            ////action = /*public*/ /*static*/ /*void*/ /*Print*/ delegate () { Console.WriteLine("hello"); };
+            ////action = delegate () { Console.WriteLine("hello"); };
+
+            //Action action = delegate () { Console.WriteLine("hello"); };
+            //action();
+
+
+            //Action<string> action1 = delegate (string str) { Console.WriteLine($"hello {str}"); };
+
+            //Func<int, string> func = delegate (int str) { return str.ToString(); };
+            #endregion
+            #region Lambda Experssion
+            // Lambda Expression : c# 3.0 Feature (.net framework 3.5 [2007])
+            // => : this called as 'FatArrow' and Read as 'GoesTo'
+
+            //Predicate<string> predicate;
+            ////predicate = delegate (string str) { return str.Length > 1; };
+            ////predicate = /*delegate (string*/ str/*)*/ => /*{ return*/ str.Length > 1; /*};*/
+            //predicate = str => str.Length > 1;
+            //predicate("ali");
+
+            ////Action action = delegate () { Console.WriteLine("hello"); };
+            ////Action action = /*delegate*/ () => /*{ */Console.WriteLine("hello"); /*};*/
+            //Action action = () => Console.WriteLine("hello");
+            //action();
+
+            ////Action<string> action1 = delegate (string str) { Console.WriteLine($"hello {str}"); };
+            //Action<string> action1 = str => Console.WriteLine($"hello {str}");
+
+            ////Func<int, string> func = delegate (int str) { return str.ToString(); };
+            //Func<int, string> func = str => str.ToString();
+            #endregion
+            #region New Feature in Delegate using "var" keyWord in c# 10.0 (.net 6)
+            //var keyword => implicitly typed local variable [C# 2.0] => know it's type form it's intial value
+            //var x = "ahmed";
+            //x = 10; //not valid
+            //var x; //not valid
+
+            // in c# 10.0 Feature (.net 6) we can use [var] as delegate but [var] is from c# 2.0
+            //var hamada = (string str) => str.Length > 1;
+            //var hamada01 = (int str) => str.ToString();
+            //var hamada02 = () => Console.WriteLine("hello");
+            //var hamada03 = (string str) => Console.WriteLine($"hello {str}");
+            #endregion
+            #region List Methods that use delegate
+            //List<int> Numbers = Enumerable.Range(0, 10).ToList();
+            ////List<int> oddnumbers = NumberFinding.FindNumbers(Numbers,(NumberFindingFuncDelegate) NumberConditions.IsOdd);
+
+            //List<int> oddnumbers = Numbers.FindAll(n => n % 2 == 1);
+            //foreach (int item in oddnumbers)
+            //{
+            //    Console.Write($"{item}\t");
+            //}
+            //Console.WriteLine();
+
+            //int firstodd = Numbers.Find(n => n % 2 == 1);
+            //Console.WriteLine(firstodd);
+
+            //int lastodd = Numbers.FindLast(n => n % 2 == 1);
+            //Console.WriteLine(lastodd);
+
+            //bool exists = Numbers.Exists(n => n % 7 == 0);
+            //Console.WriteLine(exists);
+
+            //bool trueforall = Numbers.TrueForAll(n => n % 2 == 0);
+            //Console.WriteLine(trueforall);
+            #endregion
+            #region Method return Method
+            //DelegateDoAction()();
+            //DelegateDoAction().Invoke();
+            //var x = DelegateDoAction();
+            //x();
+            #endregion
+            #endregion
+
             ///event
+            #region Event-Driven Programming
+            // 2. Event-Driven Programming [observer design pattern]
+            #region example
+            ///hase football game with Ball, Player, and Refree
+            /// Ball has location 
+            /// player run when ball locatin changed
+            /// refree look when ball location chang
+
+            ///design: UML Digrams as (Class digram, sequance digram, ERD digram)
+
+            ///default solution
+            ///ball has: 
+            ///1.full property location : get and in set check if new value not equal old location and if new fire players.run() method and refrees.look() method
+            ///2.list of Players
+            ///3.list of Refrees
+
+            ///defecties:
+            ///when we need to add list of Person we must change in ball class to add new list and change in set of location property to fire person.clap() method of person class
+            ///that make our code not maintainable and not applay [open closed principle] 
+
+            ///solution:
+            /// 1.
+            ///in [observer design pattern] => we will add only one list of (Isubscriber) 
+            ///and create interface of it or abstract class 
+            ///and every entity will subscribe (ball class) must inherit from it
+
+            /// 2.
+            ///in [Event] => add event to ball class [balllocationchanged] => has invokation list
+            ///spicfay the type of function that subscribe with it [Delegate]
+            ///fire event when ball location changed in setter
+            #endregion
+
+            Ball ball = new Ball();
+            Console.WriteLine(ball.Location);
+
+            Player p11 = new Player("P1", "T1");
+            Player p12 = new Player("P2", "T1");
+
+            Player p21 = new Player("P1", "T2");
+            Player p22 = new Player("P2", "T2");
+
+            Refree refree = new Refree("Refree01");
+
+            ball.LocationChanged += p11.Run;
+            ball.LocationChanged += p12.Run;
+            ball.LocationChanged += p21.Run;
+            ball.LocationChanged += p22.Run;
+
+            ball.LocationChanged += refree.Look;
+
+            //ball.LocationChanged = refree.Look;//not valid in event
+
+            Console.WriteLine("Match is Started");
+            ball.Location = new Location(10, 20, 30);
+
+            Console.WriteLine($"{p21} is fired!");
+            ball.LocationChanged -= p21.Run;
+
+            ball.Location = new Location(20, 30, 40);
+
+            //ball.LocationChanged(new Location(10, 20, 30)); //not valid
+            #endregion
             ///EF
         }
 
+        #region OOP
         #region PolyMorphism OverLoading
         ///1. datatype of parameters
         ///2. count number of parameters
@@ -1158,6 +1328,14 @@ namespace OOP
                 }
             }
         }
+        #endregion
+        #endregion
+
+        #region Delegates
+        //public static Action DelegateDoAction()
+        //{
+        //    return () => Console.WriteLine("hello");
+        //}
         #endregion
     }
 }

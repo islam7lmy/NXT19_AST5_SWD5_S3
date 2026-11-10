@@ -86,6 +86,22 @@ namespace OOP.Delegates
                 }
             }
         }
+
+        public static void BubbleSortingWithType<T>(T[] arr, Func<T, T, bool> reference)
+        {
+            if (arr is not null)
+            {
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    for (int j = 0; j < arr.Length - 1 - i; j++)
+                    {
+
+                        if (reference.Invoke(arr[j], arr[j + 1]))
+                            Swap(ref arr[j], ref arr[j + 1]);
+                    }
+                }
+            }
+        }
         public static void Swap<T>(ref T a, ref T b)
         {
             T temp = a;
