@@ -1135,7 +1135,7 @@ namespace OOP
             ball.LocationChanged -= p21.Run;
 
             ball.Location = new Location(20, 30, 40);
-
+            
             //ball.LocationChanged(new Location(10, 20, 30)); //not valid
             #endregion
             ///EF

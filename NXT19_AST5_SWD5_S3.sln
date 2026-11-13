@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "OOP\OOP.csproj", "{B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comman", "Comman\Comman.csproj", "{18804FE6-B285-4028-9E3F-7D4B9722A91A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore", "EFCore\EFCore.csproj", "{9907609C-A281-428C-ACD5-E356FA1D7C5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{18804FE6-B285-4028-9E3F-7D4B9722A91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18804FE6-B285-4028-9E3F-7D4B9722A91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18804FE6-B285-4028-9E3F-7D4B9722A91A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9907609C-A281-428C-ACD5-E356FA1D7C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9907609C-A281-428C-ACD5-E356FA1D7C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9907609C-A281-428C-ACD5-E356FA1D7C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9907609C-A281-428C-ACD5-E356FA1D7C5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
