@@ -44,16 +44,16 @@ namespace EFCore
             /////crud
 
 
-            using CompanyDbContext db = new CompanyDbContext();
-            Employee employee = new Employee()
-            {
-                FirstName = "ahmed",
-                LastName = "Ali",
-                Salary = 3000,
-                Age = 25
-            };
+            //using CompanyDbContext db = new CompanyDbContext();
+            //Employee employee = new Employee()
+            //{
+            //    FirstName = "ahmed",
+            //    LastName = "Ali",
+            //    Salary = 3000,
+            //    Age = 25
+            //};
 
-            Department dept = new Department() { Name = "Hr" };
+            //Department dept = new Department() { Name = "Hr" };
 
             #region Create
             //db.Employees.Add(employee);
