@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#region to make file visable in spciefic Assembly
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")] 
+#endregion
 namespace EFCore.Entities
 {
     #region Properties Mapping
@@ -69,7 +73,7 @@ namespace EFCore.Entities
     #endregion
 
     #region RealationShipMapping
-    class Employee
+    internal class Employee
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -84,7 +88,7 @@ namespace EFCore.Entities
         public int DepartmentDeptId { get; set; }
 
         //[InverseProperty(nameof(Department.Employees))]
-        //public Department Department { get; set; }
+        public virtual Department Department { get; set; }
 
         //[InverseProperty(nameof(Department.Manager))]
         //public Department? DepartmentToManage { get; set; }

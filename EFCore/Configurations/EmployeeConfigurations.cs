@@ -13,15 +13,15 @@ namespace EFCore.Configurations
     {
         public void Configure(EntityTypeBuilder<Employee> emp)
         {
-            //emp.HasOne(e=>e.Department)
-            //    .WithMany(d=>d.Employees)
-            //    .HasForeignKey(x=>x.DepartmentDeptId)
-            //    .OnDelete(DeleteBehavior.NoAction);
-
-            emp.HasOne<Department>()
-                .WithMany()
-                .HasForeignKey(e => e.DepartmentDeptId)
+            emp.HasOne(e => e.Department)
+                .WithMany(d => d.Employees)
+                .HasForeignKey(x => x.DepartmentDeptId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            //emp.HasOne<Department>()
+            //    .WithMany()
+            //    .HasForeignKey(e => e.DepartmentDeptId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
         }
     }

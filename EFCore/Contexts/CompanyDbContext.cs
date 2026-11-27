@@ -16,7 +16,9 @@ namespace EFCore.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer("Your_Connection_String_Here");
-            optionsBuilder.UseSqlServer("Data Source=Islam7lmyLapVM\\ISLAM7LMY;Initial Catalog=NXT19.EFMyCompany;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
+            optionsBuilder
+                .UseLazyLoadingProxies(true)
+                .UseSqlServer("Data Source=Islam7lmyLapVM\\ISLAM7LMY;Initial Catalog=NXT19.EFMyCompany;Integrated Security=True;Encrypt=False;Trust Server Certificate=True");
             //optionsBuilder.UseSqlServer("Data Source = Islam7lmyLapVM\\ISLAM7LMY; Intial Catalog = NXT19.EFMyCompany; Integrated Security = True; Encrypt = False; Trust Server Certificate = True");
             //optionsBuilder.UseSqlServer("Data Source = Islam7lmyLapVM\\ISLAM7LMY; Intial Catalog = NXT19.EFMyCompany; User Id = sa; Password = 1234567; Encrypt = False; Trust Server Certificate = True");
         }
@@ -24,6 +26,10 @@ namespace EFCore.Contexts
         /// OnModelCreating => Models of Database [table]
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<VIEW_EmployeeDepartment>()
+                .ToView("EmployeeDepartmentView")
+                .HasNoKey();
+
             // when inhert from dbcontext contain dbsets as scurity modual has 7 dbsets
             // inhert IdentityDbContext
             //base.OnModelCreating(modelBuilder);
@@ -100,6 +106,7 @@ namespace EFCore.Contexts
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<StudentCourse> StudentCourses { get; set; }
+        public DbSet<VIEW_EmployeeDepartment> EmployeeDepartmentView { get; set; }
         #endregion
 
     }

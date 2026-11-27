@@ -174,28 +174,28 @@ namespace EFCore
             #endregion
 
             #region Mapping Inhertince
-            using InheritanceDbContext dbContext = new InheritanceDbContext();
-            FullTime fullTime = new FullTime()
-            {
-                Name = "Ahmed",
-                Age = 22,
-                HiringDate = DateOnly.FromDateTime(DateTime.Now),
-                Salary = 6000
-            };
+            //using InheritanceDbContext dbContext = new InheritanceDbContext();
+            //FullTime fullTime = new FullTime()
+            //{
+            //    Name = "Ahmed",
+            //    Age = 22,
+            //    HiringDate = DateOnly.FromDateTime(DateTime.Now),
+            //    Salary = 6000
+            //};
 
-            PartTime partTime = new PartTime()
-            {
-                Name = "Ali",
-                Age = 25,
-                HourRate = 300,
-                HoursCount = 10
-            };
+            //PartTime partTime = new PartTime()
+            //{
+            //    Name = "Ali",
+            //    Age = 25,
+            //    HourRate = 300,
+            //    HoursCount = 10
+            //};
 
-            Person person = new Person()
-            {
-                Name = "TestPerson",
-                Age = 22
-            };
+            //Person person = new Person()
+            //{
+            //    Name = "TestPerson",
+            //    Age = 22
+            //};
 
             #region TPH
             #region Two DbSet
@@ -275,34 +275,31 @@ namespace EFCore
             #endregion
 
             #region TPC
-            dbContext.FullTimePerson.Add(FullTime);
-            //dbContext.FullTimePerson.Add(person); not valid
-            dbContext.PartTimePerson.Add(partTime);
-            //dbContext.PartTimePerson.Add(person); not valid
-            dbContext.SaveChanges();
+            //dbContext.FullTimePerson.Add(FullTime);
+            ////dbContext.FullTimePerson.Add(person); not valid
+            //dbContext.PartTimePerson.Add(partTime);
+            ////dbContext.PartTimePerson.Add(person); not valid
+            //dbContext.SaveChanges();
 
-            var fullTimePersons = from p in dbContext.FullTimePerson
-                                  select p;
+            //var fullTimePersons = from p in dbContext.FullTimePerson
+            //                      select p;
 
-            Console.WriteLine("*****************fulltime******************");
-            foreach (var item in fullTimePersons)
-            {
-                Console.WriteLine($"FullTime Employee:{item.Name}, Salary: {item.Salary}");
-            }
+            //Console.WriteLine("*****************fulltime******************");
+            //foreach (var item in fullTimePersons)
+            //{
+            //    Console.WriteLine($"FullTime Employee:{item.Name}, Salary: {item.Salary}");
+            //}
 
-            var partTimePersons = from p in dbContext.PartTimePerson
-                                  select p;
+            //var partTimePersons = from p in dbContext.PartTimePerson
+            //                      select p;
 
-            Console.WriteLine("*****************parttime******************");
-            foreach (var item in partTimePersons)
-            {
-                Console.WriteLine($"PartTime Employee:{item.Name}, HourRate: {item.HourRate}");
-            }
-            ndregion
-
+            //Console.WriteLine("*****************parttime******************");
+            //foreach (var item in partTimePersons)
+            //{
+            //    Console.WriteLine($"PartTime Employee:{item.Name}, HourRate: {item.HourRate}");
+            //}
             #endregion
             #endregion
-
 
             #region work with multi dbcontext
             ///Add-Migration "TPHInitialCreate" -Context "InheritanceDbContext" -OutputDir "MigrationsForInheritanceDbContext"
@@ -310,6 +307,189 @@ namespace EFCore
             ///Update-Database -Context "InheritanceDbContext"
             #endregion
 
+
+            #region Loading Navigational Properties
+            //using CompanyDbContext db = new CompanyDbContext();
+            ///write query to get employee of id == 1
+            ///then print employee and department name
+            #region By Default
+            //var Emp = (from e in db.Employees
+            //           where e.Id == 1
+            //           select e).FirstOrDefault();
+
+            ////var test = db.Employees.Where(e => e.Id == 1).FirstOrDefault();
+
+            //if (Emp is not null)
+            //    Console.WriteLine($"Employee: Id = {Emp.Id}, Name = {Emp.Name}, Department = {Emp.Department?.Name ?? "N/A"}");
+
+            //var Dept = (from d in db.Set<Department>()
+            //            where d.DeptId == 20
+            //            select d).FirstOrDefault();
+            //if (Dept is not null)
+            //{
+            //    Console.WriteLine($"Department: Id = {Dept.DeptId}, Name = {Dept.Name}");
+            //    if (Dept.Employees is not null)
+            //    {
+            //        foreach (var emp in Dept.Employees /*?? new List<Employee>()*/)
+            //        {
+            //            Console.WriteLine($".............Employee: Id = {emp.Id}, Name = {emp.Name}, Department = {emp.Department?.Name ?? "NA"}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($".............Has No Employees");
+            //    }
+            //}
+            #endregion
+
+            #region Explicit 
+            //var Emp = (from e in db.Employees
+            //           where e.Id == 1
+            //           select e).FirstOrDefault();
+
+            //if (Emp is not null)
+            //{
+            //    db.Entry(Emp).Reference(e => e.Department).Load(); //loading one explicit
+            //    Console.WriteLine($"Employee: Id = {Emp.Id}, Name = {Emp.Name}, Department = {Emp.Department?.Name ?? "N/A"}");
+            //}
+
+
+            //var Dept = (from d in db.Set<Department>()
+            //            where d.DeptId == 20
+            //            select d).FirstOrDefault();
+
+            //var DeptList = (from d in db.Set<Department>()
+            //                select d).ToList(); // 1 + N Query
+
+            //if (Dept is not null)
+            //{
+            //    db.Entry(Dept).Collection(d => d.Employees).Load(); //loading multi explicit
+            //    Console.WriteLine($"Department: Id = {Dept.DeptId}, Name = {Dept.Name}");
+            //    if (Dept.Employees is not null)
+            //    {
+            //        foreach (var emp in Dept.Employees /*?? new List<Employee>()*/)
+            //        {
+            //            Console.WriteLine($".............Employee: Id = {emp.Id}, Name = {emp.Name}, Department = {emp.Department?.Name ?? "NA"}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($".............Has No Employees");
+            //    }
+            //}
+
+            //foreach (var dept in DeptList)
+            //{
+            //    db.Entry(dept).Collection(d => d.Employees).Load(); //loading multi explicit
+
+            //    Console.WriteLine($"Department: Id = {dept.DeptId}, Name = {dept.Name}");
+            //    if (dept.Employees is not null)
+            //    {
+            //        foreach (var emp in dept.Employees /*?? new List<Employee>()*/)
+            //        {
+            //            Console.WriteLine($".............Employee: Id = {emp.Id}, Name = {emp.Name}, Department = {emp.Department?.Name ?? "NA"}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($".............Has No Employees");
+            //    }
+            //}
+            #endregion
+
+            #region Eager
+            ////select * from employee e left outer join department d on e.deptid = d.deptid
+            //var Emp = (from e in db.Employees
+            //           .Include(e => e.Department)
+            //               //.Include(e => e.Department).ThenInclude(d => d.Project).ThenInclude(p => p.Product)
+            //               //.Include(e => e.Department).ThenInclude(d => d.Service)
+            //           where e.Id == 1
+            //           select e).FirstOrDefault();
+
+            //if (Emp is not null)
+            //    Console.WriteLine($"Employee: Id = {Emp.Id}, Name = {Emp.Name}, Department = {Emp.Department?.Name ?? "N/A"}");
+
+
+            //var Dept = (from d in db.Set<Department>()
+            //            .Include(d => d.Employees)
+            //            where d.DeptId == 20
+            //            select d).FirstOrDefault();
+            //if (Dept is not null)
+            //{
+            //    Console.WriteLine($"Department: Id = {Dept.DeptId}, Name = {Dept.Name}");
+            //    if (Dept.Employees is not null)
+            //    {
+            //        foreach (var emp in Dept.Employees /*?? new List<Employee>()*/)
+            //        {
+            //            Console.WriteLine($".............Employee: Id = {emp.Id}, Name = {emp.Name}, Department = {emp.Department?.Name ?? "NA"}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($".............Has No Employees");
+            //    }
+            //}
+            #endregion
+
+            #region Lazy Loading
+            ///1.install package Microsoft.EntityFrameworkCore.proxies
+            ///2.in dbcontext onconfguring => optionBuilder.UseLazyLoadingProxies(True);
+            ///3.make class public to can access from anthor assemply OR [InternalsVisibleTo]
+            ///4.make Navigational Property virtual
+
+            //var Emp = (from e in db.Employees
+            //           where e.Id == 1
+            //           select e).FirstOrDefault();
+
+            //if (Emp is not null)
+            //    Console.WriteLine($"Employee: Id = {Emp.Id}, Name = {Emp.Name}, Department = {Emp.Department?.Name ?? "N/A"}");
+
+
+            //var Dept = (from d in db.Set<Department>()
+            //            where d.DeptId == 20
+            //            select d).FirstOrDefault();
+            //if (Dept is not null)
+            //{
+            //    Console.WriteLine($"Department: Id = {Dept.DeptId}, Name = {Dept.Name}");
+            //    if (Dept.Employees is not null)
+            //    {
+            //        foreach (var emp in Dept.Employees /*?? new List<Employee>()*/)
+            //        {
+            //            Console.WriteLine($".............Employee: Id = {emp.Id}, Name = {emp.Name}, Department = {emp.Department?.Name ?? "NA"}");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($".............Has No Employees");
+            //    }
+            //}
+            #endregion
+
+            #region Explicit vs Eager vs Lazy
+            ///first enbale Lazy Loading Mode in app
+            ///if navigational property is one => Eager
+            ///if navigational property is many => dependes
+            ///........if  [Requierd] => Eager => order & order item
+            ///........if  [optional] => Lazy => department & employees
+            #endregion
+            #endregion
+
+
+            #region Mapping View
+            ///1.add new empty migration with name of view
+            ///2.in up write sql code to create view 
+            ///3.in down write sql code to drop view
+            ///4.create class with same structure of view
+            ///5.add dbset
+            ///6.on model create refer to view and set hasnokey
+            ///7.use dbset to get data
+
+            //using CompanyDbContext db = new CompanyDbContext();
+            //var result = db.EmployeeDepartmentView.AsNoTracking();
+            //foreach (var item in result)
+            //    Console.WriteLine($"Employee:{item.EmpName}, Department:{item.DepartmentName ?? "NA"}");
+
+            #endregion
         }
     }
 }
